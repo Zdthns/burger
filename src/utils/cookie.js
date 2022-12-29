@@ -38,4 +38,4 @@ export const getCookie = (name) => {
 
 export const deleteCookie = (name) => {
   setCookie(name, null, { expires: -1 });
-}
+};
