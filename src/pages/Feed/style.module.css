@@ -34,11 +34,11 @@
 
 @media screen and (max-width: 1920px) {
   .section {
-      max-height: 550px;
+    max-height: 550px;
   }
 
   .section::-webkit-scrollbar-thumb {
-      height: 200px;
+    height: 200px;
   }
 }
 
@@ -50,7 +50,7 @@
   grid-template-rows: minmax(max-content, max-content) minmax(max-content, max-content);
 }
 
-.board{
+.board {
   display: flex;
   justify-content: space-between;
 }

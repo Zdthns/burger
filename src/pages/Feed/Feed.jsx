@@ -1,35 +1,26 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
-
 import style from "./style.module.css";
-
+import { wsStart, wsClose } from "../../services/actions/wsConect";
 import Orders from "../Orders/Orders";
+import { useDispatch } from "react-redux";
 
 function Feed() {
-  const orders = useSelector((store) => store.ws.orders);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    dispatch(wsStart());
+    return () => {
+      dispatch(wsClose());
+    };
+  }, [dispatch]);
+
   return (
-    <>
-      {orders.map((order) => {
-        return (
-          <Link
-            to={{
-              pathname: `/feed/${order._id}`,
-              state: { background: location },
-            }}
-            className={style.link}
-            key={order._id}
-          >
-            <Orders
-              status=""
-              orderNumber={order.number}
-              orderCreateTime={order.createdAt}
-              burgerName={order.name}
-              ingredients={order.ingredients}
-            />
-          </Link>
-        );
-      })}
-    </>
+    <section className={style.page}>
+      <article className={`pl-2 pr-2 ${style.feed_section}`}>
+        <h1 className="text text_type_main-large mt-10 mb-5">Лента заказов</h1>
+        <div className={`mt-5 ${style.section}`}></div>
+      </article>
+    </section>
   );
 }
 

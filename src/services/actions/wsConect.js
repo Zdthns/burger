@@ -1,10 +1,11 @@
 import {
+  WS_CONNECTION_START,
   WS_CONNECTION_SUCCESS,
   WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
   WS_CONNECTION_CLOSE,
   WS_GET_ORDERS,
-} from "./types";
+} from "../../utils/wsConstants";
 
 export const wsConnectionSuccess = () => {
   return {
@@ -35,4 +36,8 @@ export const wsClose = () => {
   return {
     type: WS_CONNECTION_CLOSE,
   };
+};
+
+export const wsStart = () => {
+  return { type: WS_CONNECTION_START };
 };

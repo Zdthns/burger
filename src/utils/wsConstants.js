@@ -1,3 +1,18 @@
+export const WS_CONNECTION_START = "WS_CONNECTION_START";
+export const WS_CONNECTION_SUCCESS = "WS_CONNECTION_SUCCESS";
+export const WS_CONNECTION_ERROR = "WS_CONNECTION_ERROR";
+export const WS_CONNECTION_CLOSED = "WS_CONNECTION_CLOSED";
+export const WS_CONNECTION_CLOSE = "WS_CONNECTION_CLOSE";
+export const WS_GET_ORDERS = "WS_GET_ORDERS";
+export const WS_SEND_ORDERS = "WS_SEND_ORDERS";
+
+export const WS_AUTH_CONNECTION_START = "WS_AUTH_CONNECTION_START";
+export const WS_AUTH_CONNECTION_SUCCESS = "WS_AUTH_CONNECTION_SUCCESS";
+export const WS_AUTH_CONNECTION_ERROR = "WS_AUTH_CONNECTION_ERROR";
+export const WS_AUTH_CONNECTION_CLOSED = "WS_AUTH_CONNECTION_CLOSED";
+export const WS_AUTH_CONNECTION_CLOSE = "WS_AUTH_CONNECTION_CLOSE";
+export const WS_AUTH_GET_ORDERS = "WS_AUTH_GET_ORDERS";
+export const WS_AUTH_SEND_ORDERS = "WS_AUTH_SEND_ORDERS";
 export const wsUrl = "wss://norma.nomoreparties.space/orders/all";
 export const wsAuthUrl = "wss://norma.nomoreparties.space/orders";
 
