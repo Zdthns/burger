@@ -5,13 +5,13 @@ import {
 } from "redux";
 import { rootReducer } from "../services/reducers/root.js";
 import thunk from "redux-thunk";
-import { socketMiddleware } from "./middleware/socketMiddleware";
+import { socketMiddleware } from "../services/middleware/socketMiddleware";
 import {
   wsUrl,
   wsActions,
   wsAuthUrl,
   wsAuthActions,
-} from "./../services/middleware/socketMiddleware";
+} from "./../utils/wsConstants";
 
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

@@ -44,7 +44,7 @@ function Profile() {
       <div>
         <nav className={style.profile_nav}>
           <h2>Профиль</h2>
-          <NavLink to="orders" className={setActive}>
+          <NavLink to="/profile/orders" className={setActive}>
             История заказов
           </NavLink>
           <button
