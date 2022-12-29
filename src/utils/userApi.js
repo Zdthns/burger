@@ -89,6 +89,7 @@ export const getUser = () =>
 export const updateUser = (data) =>
   fetch(`${api}/auth/user`, {
     method: "PATCH",
+
     headers: {
       "Content-Type": "application/json",
       Authorization: `${getCookie("token")}`,

@@ -20,6 +20,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Orders from "../../pages/Orders/Orders";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Modal from "../Modal/Modal";
+import Feed from "../../pages/Feed/Feed";
 import { getIngredients } from "../../services/actions/ingredients.js";
 import {
   deleteIngredienData,
@@ -97,6 +98,7 @@ function App() {
             }
           />{" "}
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/feed" element={<Feed />} />
           <Route
             path="/profile"
             element={
@@ -108,8 +110,14 @@ function App() {
             }
           />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/forgotpassword" element={<ForgotPassword />} />
-          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route
+            path="/forgotpassword"
+            element={
+              <ForgotPassword>
+                <Route path="resetpassword" element={<ResetPassword />} />
+              </ForgotPassword>
+            }
+          />
           <Route
             path="/ingredients/*"
             element={
