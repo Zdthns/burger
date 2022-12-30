@@ -1,0 +1,52 @@
+.wrapper {
+  margin: 40px auto 0;
+  width: 1280px;
+  display: flex;
+  box-sizing: border-box;
+}
+
+.link {
+  line-height: 64px;
+  text-decoration: none;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.linkActive {
+  color: #F2F2F3;
+}
+
+
+
+
+
+
+.navigation {
+  margin: 120px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.caption {
+  color: #8585AD;
+  opacity: 0.4;
+  text-align: left;
+  margin: 80px 0 0;
+}
+
+
+
+.feed {
+  width: 844px;
+  margin: 0 0 0 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu {
+  width: 320px;
+}

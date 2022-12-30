@@ -30,7 +30,7 @@ function Navigation() {
         <li className={`${style.li} pt-4 pr-5 pb-4 pl-5 mr-2`}>
           <NavLink
             to="/feed"
-            className={`${setActive} ml-2 text_type_main-default`}
+            className={setActive}
             onClick={() => setType("len")}
           >
             <ListIcon type={type === "len" ? "primary" : "secondary"} />

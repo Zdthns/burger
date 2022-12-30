@@ -17,7 +17,7 @@ import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { authUser, refreshToken } from "../../services/actions/user";
 import { getOrder } from "../../services/actions/order.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import Orders from "../../pages/Orders/Orders";
+import Orders from "../profileComponents/UserOrders/UserOrders";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Modal from "../Modal/Modal";
 import Feed from "../../pages/Feed/Feed";

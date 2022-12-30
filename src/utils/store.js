@@ -6,12 +6,8 @@ import {
 import { rootReducer } from "../services/reducers/root.js";
 import thunk from "redux-thunk";
 import { socketMiddleware } from "../services/middleware/socketMiddleware";
-import {
-  wsUrl,
-  wsActions,
-  wsAuthUrl,
-  wsAuthActions,
-} from "./../utils/wsConstants";
+import { wsUrl, wsAuthUrl, wsAuthActions } from "./../services/actions/wsUser";
+import { wsActions } from "./../services/actions/wsConect";
 
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__

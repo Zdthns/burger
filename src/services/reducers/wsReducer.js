@@ -4,13 +4,16 @@ import {
   WS_CONNECTION_CLOSED,
   WS_CONNECTION_CLOSE,
   WS_GET_ORDERS,
-} from "../../utils/wsActionTypes.js";
+} from "../actions/wsConect";
 
 const initialState = {
   wsConnected: false,
-  orders: [],
-  total: null,
-  totalToday: null,
+  wsError: undefined,
+  messages: {
+    orders: [],
+    total: 0,
+    totalToday: 0,
+  },
 };
 
 export const wsReducer = (state = initialState, action) => {
@@ -19,32 +22,34 @@ export const wsReducer = (state = initialState, action) => {
       return {
         ...state,
         wsConnected: true,
+        wsError: undefined,
       };
 
     case WS_CONNECTION_ERROR:
       return {
         ...state,
         wsConnected: false,
+        wsError: action.payload,
       };
 
     case WS_CONNECTION_CLOSED:
       return {
         ...state,
         wsConnected: false,
+        wsError: undefined,
       };
 
     case WS_GET_ORDERS:
       return {
         ...state,
-        orders: action.payload.orders,
-        total: action.payload.total,
-        totalToday: action.payload.totalToday,
+        messages: { ...action.payload },
       };
 
     case WS_CONNECTION_CLOSE:
       return {
         ...initialState,
         wsConnected: false,
+        wsError: undefined,
       };
     default:
       return state;
