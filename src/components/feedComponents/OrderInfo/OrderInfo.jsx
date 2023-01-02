@@ -29,6 +29,8 @@ function OrderInfo() {
   const isFeed = location.pathname.includes("feed");
   const allOrders = useSelector((store) => store.wsReducer.messages.orders);
   const orders = isProfile ? userOrders : allOrders;
+  console.log(`isProfile: ${isProfile}`);
+  console.log(`isFeed: ${isFeed}`);
 
   orders.map((el) => {
     return {

@@ -17,7 +17,7 @@ import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { authUser, refreshToken } from "../../services/actions/user";
 import { getOrder } from "../../services/actions/order.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import Orders from "../profileComponents/UserOrders/UserOrders";
+import OrderInfo from "../feedComponents/OrderInfo/OrderInfo";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Modal from "../Modal/Modal";
 import Feed from "../../pages/Feed/Feed";
@@ -31,7 +31,7 @@ import { getCookie } from "../../utils/cookie";
 
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
-import OrderInfo from "../feedComponents/OrderInfo/OrderInfo";
+import Test from "../profileComponents/Test";
 
 function App() {
   const { isAuth } = useSelector((store) => store.user);
@@ -105,7 +105,7 @@ function App() {
             element={
               <ProtectedRoute isAuth={isAuth}>
                 <Profile>
-                  <Route path="/orders" element={<Orders />} />
+                  <Route path="/orders" element={<Test />} />
                 </Profile>
               </ProtectedRoute>
             }
