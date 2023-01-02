@@ -5,6 +5,7 @@ import Form from "../../components/Form/Form";
 import { getUpdateUser } from "../../services/actions/user.js";
 
 import NavBar from "../../components/profileComponents/NavBar/NavBar";
+import { Outlet } from "react-router-dom";
 
 function Profile() {
   const { user } = useSelector((store) => store.user);
@@ -39,13 +40,14 @@ function Profile() {
         </p>
       </div>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <Form
+        <Outlet />
+        {/*<Form
           fields={fields}
           buttonText="Сохранить"
           form={form}
           onChange={onChange}
           onSubmit={onSubmit}
-        />
+        />*/}
       </div>
     </section>
   );
