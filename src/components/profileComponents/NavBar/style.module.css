@@ -1,0 +1,61 @@
+.nav {
+  margin-bottom: 80px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  padding-top: 80px;
+}
+
+.profile_link {
+  text-decoration: none;
+  color: #8585AD;
+  margin-bottom: 30px;
+}
+
+
+.profile_caption {
+  width: 320px;
+  color: #8585AD;
+}
+
+
+
+.link {
+  list-style: none;
+  text-decoration: none;
+  color: #8585AD;
+}
+
+.link:focus {
+  color: white;
+}
+
+
+
+.additional_text {
+  display: flex;
+  max-width: 320px;
+}
+
+.wrapper {
+  display: flex;
+  column-gap: 60px;
+  justify-content: left;
+  max-width: 1240px;
+  margin: 120px auto 0 auto;
+}
+
+.activeLink {
+  color: white;
+}
+
+.button {
+  list-style: none;
+  text-decoration: none;
+  color: #8585AD;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}

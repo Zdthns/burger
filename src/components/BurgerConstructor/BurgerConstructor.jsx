@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
 import { useDrop } from "react-dnd";
 import { useNavigate } from "react-router-dom";
+import { wsAuthSendMessage } from "../../services/actions/wsUser";
 
 import {
   ADD_INGREDIENT_TO_CONSTRUCTOR,
@@ -74,6 +75,7 @@ function BurgerConstructor({ createOrder }) {
   const openOrder = () => {
     if (isAuth) {
       createOrder(orderData);
+      dispatch(wsAuthSendMessage(orderData));
     } else {
       navigate("/login");
     }

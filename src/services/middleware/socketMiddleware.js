@@ -17,7 +17,6 @@ export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
     return (next) => (action) => {
       const { dispatch } = store;
       const { type, payload } = action;
-      //const { isAuth } = getState().authReducer;
 
       if (type === wsInit) {
         if (!isAuth) {

@@ -1,61 +1,52 @@
-import React from "react";
-import { Link, useNavigation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { React, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  WS_CONNECTION_START,
+  WS_CONNECTION_CLOSED,
+} from "../../../services/actions/wsConect";
+import { getCookie } from "../../../utils/cookie.js";
 import style from "./style.module.css";
-
 import Order from "../../Order/Order";
+import NavBar from "../NavBar/NavBar";
+import { WEB_SOCKET_URL } from "../../../utils/webSocket";
 
 export function UserOrders() {
-  const location = useNavigation();
+  const dispatch = useDispatch();
+  const accessToken = getCookie("accessToken");
 
-  const orders = useSelector((store) => store.wsUserReducer.orders);
+  useEffect(() => {
+    dispatch({
+      type: WS_CONNECTION_START,
+      payload: `${WEB_SOCKET_URL}?token=${accessToken?.replace("Bearer ", "")}`,
+    });
+    return () => {
+      dispatch({
+        type: WS_CONNECTION_CLOSED,
+      });
+    };
+  }, [dispatch, accessToken]);
 
-  console.log(orders);
+  const orders = useSelector((state) => state.wsReducer.messages.orders);
 
   return (
-    <section className={style.wrapper}>
-      {orders.map((order) => {
-        return (
-          <Link
-            to={{
-              pathname: `/profile/orders/${order._id}`,
-              state: { background: location },
-            }}
-            className={style.link}
-            key={order._id}
-          >
-            {order.status === "done" && (
+    <div className={style.wrapper}>
+      <NavBar />
+      <ul className={style.orders}>
+        {orders?.map((order) => {
+          return (
+            <li key={order._id}>
               <Order
-                status="Выполнен"
+                status=""
                 orderNumber={order.number}
                 orderCreateTime={order.createdAt}
                 burgerName={order.name}
                 ingredients={order.ingredients}
               />
-            )}
-            {order.status === "created" && (
-              <Order
-                status="Создан"
-                orderNumber={order.number}
-                orderCreateTime={order.createdAt}
-                burgerName={order.name}
-                ingredients={order.ingredients}
-              />
-            )}
-            {order.status === "pending" && (
-              <Order
-                status="Готовится"
-                orderNumber={order.number}
-                orderCreateTime={order.createdAt}
-                burgerName={order.name}
-                ingredients={order.ingredients}
-              />
-            )}
-          </Link>
-        );
-      })}
-    </section>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
-
 export default UserOrders;

@@ -1,4 +1,4 @@
-import { React, useMemo, useEffect } from "react";
+import { React } from "react";
 import { useLocation, Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
@@ -16,7 +16,7 @@ export function Orders() {
         return (
           <Link
             to={{
-              pathname: `/feed/${order._id}`,
+              pathname: `${location.pathname}/:id${order._id}`,
               state: { background: location },
             }}
             className={style.link}

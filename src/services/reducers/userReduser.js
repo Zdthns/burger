@@ -27,10 +27,7 @@ import {
 } from "../actions/user";
 
 const initialState = {
-  user: {
-    name: "",
-    email: "",
-  },
+  user: null,
   isAuth: false,
   isGetUserRequest: false,
   isGetUserSession: false,
@@ -135,8 +132,7 @@ const userReducer = (state = initialState, action) => {
     case REGISTER_USER_SUCCESS: {
       return {
         ...state,
-        user: action.user,
-        email: action.email,
+        user: action.payload,
         IsRegisterUserSuccess: true,
         isAuth: true,
       };
@@ -220,30 +216,7 @@ const userReducer = (state = initialState, action) => {
         isTokenFailed: true,
       };
     }
-    // авторизация
-    //case AUTH_USER_REQUEST: {
-    //  return {
-    //    ...state,
-    //    isAuthUserRequest: true,
-    //    isAuthUserFailed: false,
-    //  };
-    //}
-    //case AUTH_USER_SUCCESS: {
-    //  return {
-    //    ...state,
-    //    user: action.user,
-    //    isAuth: true,
-    //    isAuthUserRequest: false,
-    //    isAuthUserFailed: true,
-    //  };
-    //}
-    //case AUTH_USER_ERROR: {
-    //  return {
-    //    ...state,
-    //    isAuthUserRequest: true,
-    //    isAuthUserFailed: false,
-    //  };
-    //}
+
     case LOGIN_USER_REQUEST: {
       return {
         ...state,

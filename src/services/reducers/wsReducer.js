@@ -45,12 +45,12 @@ export const wsReducer = (state = initialState, action) => {
         messages: { ...action.payload },
       };
 
-    case WS_CONNECTION_CLOSE:
-      return {
-        ...initialState,
-        wsConnected: false,
-        wsError: undefined,
-      };
+    //case WS_CONNECTION_CLOSE:
+    //  return {
+    //    ...initialState,
+    //    wsConnected: false,
+    //    wsError: undefined,
+    //  };
     default:
       return state;
   }

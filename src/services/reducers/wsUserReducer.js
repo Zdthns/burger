@@ -40,6 +40,11 @@ export const wsUserReducer = (state = initialState, action) => {
         total: action.payload.total,
         totalToday: action.payload.totalToday,
       };
+    case WS_AUTH_SEND_ORDERS:
+      return {
+        ...state,
+        orders: action.payload,
+      };
     default:
       return state;
   }

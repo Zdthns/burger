@@ -79,6 +79,9 @@ export const getPasswordReset = async (email) => {
 export const getUser = () =>
   fetch(`${api}/auth/user`, {
     method: "GET",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
       Authorization: `${getCookie("token")}`,

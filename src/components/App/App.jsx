@@ -5,7 +5,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { useSelector, useDispatch } from "react-redux";
 import style from "./app.module.css";
 
-import Layout from "../Layout.jsx/Layout";
+import Layout from "../Layout/Layout";
 import LoginPage from "../../pages/LoginPage/LoginPage";
 import RegisterPage from "../../pages/RegisterPage/RegisterPage";
 import ForgotPassword from "../../pages/ForgotPassword/ForgotPassword";
@@ -31,6 +31,7 @@ import { getCookie } from "../../utils/cookie";
 
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
+import OrderInfo from "../feedComponents/OrderInfo/OrderInfo";
 
 function App() {
   const { isAuth } = useSelector((store) => store.user);
@@ -127,6 +128,14 @@ function App() {
                 onClose={closeModal}
               >
                 <IngredientDetails />
+              </Modal>
+            }
+          />
+          <Route
+            path="/feed/:id/*"
+            element={
+              <Modal item=" text" title=" " onClose={closeModal}>
+                <OrderInfo />
               </Modal>
             }
           />

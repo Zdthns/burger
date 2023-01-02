@@ -18,39 +18,39 @@ export const wsAuthActions = {
   wsClose: WS_AUTH_CONNECTION_CLOSE,
 };
 
-export const wsConnectionSuccess = () => {
+export const wsAuthConnectionSuccess = () => {
   return {
     type: WS_AUTH_CONNECTION_SUCCESS,
   };
 };
 
-export const wsConnectionError = () => {
+export const wsAuthConnectionError = () => {
   return {
     type: WS_AUTH_CONNECTION_ERROR,
   };
 };
 
-export const wsConnectionClosed = () => {
+export const wsAuthConnectionClosed = () => {
   return {
     type: WS_AUTH_CONNECTION_CLOSED,
   };
 };
 
-export const wsGetMessage = (order) => {
+export const wsAuthGetMessage = (order) => {
   return {
     type: WS_AUTH_GET_ORDERS,
     payload: order,
   };
 };
 
-export const wsSendMessage = (order) => {
+export const wsAuthSendMessage = (order) => {
   return {
     type: WS_AUTH_SEND_ORDERS,
     payload: order,
   };
 };
 
-export const wsConnectionClose = () => {
+export const wsAuthConnectionClose = () => {
   return {
     type: WS_AUTH_CONNECTION_CLOSE,
   };
