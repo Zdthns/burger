@@ -16,7 +16,7 @@ export function Orders() {
         return (
           <Link
             to={{
-              pathname: `${location.pathname}/:id${order._id}`,
+              pathname: `${location.pathname}/${order._id}`,
               state: { background: location },
             }}
             className={style.link}

@@ -21,7 +21,6 @@ function OrderInfo() {
   const history = useNavigate();
   const dispatch = useDispatch();
   let { id } = useParams();
-  console.log(id);
 
   const user = useSelector((store) => store.user);
   const userOrders = useSelector((store) => store.wsUser.orders);
@@ -31,10 +30,14 @@ function OrderInfo() {
   const allOrders = useSelector((store) => store.wsReducer.messages.orders);
   const orders = isProfile ? userOrders : allOrders;
 
-  let orderData = orders.find((el) => el._id === );
+  orders.map((el) => {
+    return {
+      id: el.id,
+    };
+  });
+  let orderData = orders.find((el) => el._id === id);
 
   const allIngredients = useSelector((store) => store.ingredients.ingredients);
-  console.log(orders);
 
   const orderInfo = useMemo(() => {
     if (!orderData || 0) return null;
@@ -98,7 +101,7 @@ function OrderInfo() {
   return (
     <>
       <p className={`text text_type_digits-default mb-10 ${style.number}`}>
-        {orderInfo.number}
+        {orderInfo.totalOrder}
       </p>
       <h3 className="text text_type_main-medium mb-3">{orderInfo.name}</h3>
       {orderInfo.status === "done" && (
@@ -115,11 +118,11 @@ function OrderInfo() {
       <h3 className="text text_type_main-medium mb-6">Состав:</h3>
       <section className={style.section}>
         {orderInfo.count &&
-          [...new Set(style.ingredients)].map((ingredient, index) => (
+          [...new Set(orderInfo.ingredients)].map((ingredient, index) => (
             <IngredientInfo
               ingredient={ingredient}
               key={index}
-              count={style.count}
+              count={orderInfo.count}
             />
           ))}
       </section>

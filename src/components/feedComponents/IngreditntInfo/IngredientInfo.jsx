@@ -5,9 +5,7 @@ import style from "./style.module.css";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
 function IngredientInfo({ ingredient, count }) {
-  const allIngredients = useSelector(
-    (store) => store.ingredientsList.ingredients
-  );
+  const allIngredients = useSelector((store) => store.ingredients.ingredients);
 
   const currentIngredient = useMemo(() => {
     if (!ingredient || 0) return null;
