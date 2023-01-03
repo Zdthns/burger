@@ -1,5 +1,5 @@
 import { React, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import style from "./style.module.css";
 import Orders from "../../components/feedComponents/Orders/Orders";
 import OrdersStatus from "../../components/feedComponents/OrderStatus/OrderStatus";
@@ -17,12 +17,13 @@ function Feed() {
     };
   }, [dispatch]);
 
+  const orders = useSelector((store) => store.wsReducer.messages.orders);
   return (
     <section className={style.page}>
       <article className={`pl-2 pr-2 ${style.feed_section}`}>
         <h1 className="text text_type_main-large mt-10 mb-5">Лента заказов</h1>
         <div className={`mt-5 ${style.section}`}>
-          <Orders />
+          <Orders orders={orders} />
         </div>
       </article>
       <OrdersStatus />

@@ -101,11 +101,11 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/feed" element={<Feed />} />
           <Route
-            path="/profile"
+            path="/profile/*"
             element={
               <ProtectedRoute isAuth={isAuth}>
                 <Profile>
-                  <Route path="/orders" element={<Orders />} />
+                  <Route path="orders" element={<Orders />} />
                 </Profile>
               </ProtectedRoute>
             }

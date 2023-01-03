@@ -1,5 +1,12 @@
-.wrapper {
+.number {
+  align-self: center;
+}
 
+.done {
+  color: #00CCCC;
+}
+
+.section {
   display: flex;
   flex-direction: column;
   row-gap: 16px;
@@ -7,7 +14,6 @@
   max-height: 312px;
   padding-right: 24px;
 }
-
 
 .section::-webkit-scrollbar {
   width: 8px;
@@ -32,4 +38,9 @@
 .price {
   display: flex;
   align-items: center;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
 }

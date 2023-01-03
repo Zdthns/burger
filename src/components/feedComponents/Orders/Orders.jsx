@@ -6,9 +6,10 @@ import { useSelector } from "react-redux";
 import style from "../style.module.css";
 import Order from "../../Order/Order";
 
-export function Orders() {
+export function Orders(orders) {
   const location = useLocation();
-  const orders = useSelector((store) => store.wsReducer.messages.orders);
+
+  console.log(orders);
 
   return (
     <>

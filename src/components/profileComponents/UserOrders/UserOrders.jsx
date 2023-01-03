@@ -7,8 +7,8 @@ import {
 import { getCookie } from "../../../utils/cookie.js";
 import style from "./style.module.css";
 import Order from "../../Order/Order";
-import NavBar from "../NavBar/NavBar";
-import { WEB_SOCKET_URL } from "../../../utils/webSocket";
+
+import { wsAuthUrl } from "../../../services/actions/wsUser";
 
 export function UserOrders() {
   const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export function UserOrders() {
   useEffect(() => {
     dispatch({
       type: WS_CONNECTION_START,
-      payload: `${WEB_SOCKET_URL}?token=${accessToken?.replace("Bearer ", "")}`,
+      payload: `${wsAuthUrl}?token=${accessToken?.replace("Bearer ", "")}`,
     });
     return () => {
       dispatch({
@@ -30,8 +30,7 @@ export function UserOrders() {
 
   return (
     <div className={style.wrapper}>
-      <NavBar />
-      <ul className={style.orders}>
+      <ul className={style.section}>
         {orders?.map((order) => {
           return (
             <li key={order._id}>
