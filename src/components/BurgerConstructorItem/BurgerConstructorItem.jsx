@@ -10,7 +10,6 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import {
-  //DeleteIngredientFromConstructor,
   DELETE_INGREDIENT_FROM_CONSTRUCTOR,
   moveItems,
 } from "../../services/actions/constructor.js";
@@ -18,11 +17,6 @@ import {
 const BurgerConstructorItem = React.memo((props) => {
   const dispatch = useDispatch();
 
-  //const deleteElement = (evt, item) => {
-  //  evt.preventDefault();
-
-  //  dispatch(DeleteIngredientFromConstructor(item.key));
-  //};
   const deleteElement = (evt, item) => {
     evt.preventDefault();
 

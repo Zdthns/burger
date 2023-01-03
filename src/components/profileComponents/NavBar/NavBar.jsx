@@ -3,21 +3,24 @@ import { logoutUser } from "../../../services/actions/user";
 import style from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Routes, Route } from "react-router-dom";
-import Profile from "../../../pages/Profile/Profile";
+import Profile1 from "../../../pages/Profile/Profile1";
 import OrderInfo from "../../feedComponents/OrderInfo/OrderInfo";
-import Test from "../Test";
+import Test from "../../../pages/Profile/Test";
 import Form from "../../Form/Form";
 import { getUpdateUser } from "../../../services/actions/user";
+import { Outlet } from "react-router-dom";
+
 function NavBar() {
   const dispatch = useDispatch();
   const setActive = ({ isActive }) =>
     isActive ? style.activeLink : style.link;
 
-  const { user } = useSelector((store) => store.user);
+  //const { user } = useSelector((store) => store.user);
   const logout = () => {
     console.log("выход");
     dispatch(logoutUser());
   };
+  const { user } = useSelector((store) => store.user);
   const [form, setForm] = React.useState({
     name: user.name,
     login: user.email,
@@ -41,7 +44,7 @@ function NavBar() {
   return (
     <>
       <nav className={style.nav}>
-        <NavLink to="/profile/" className={setActive}>
+        <NavLink to="/profile" className={setActive}>
           Профиль
         </NavLink>
         <NavLink to="/profile/orders" className={setActive}>
@@ -57,26 +60,23 @@ function NavBar() {
       </nav>
       <Routes>
         <Route
-          to="/profile"
+          path="/"
           element={
-            <Profile
-              element={
-                <Form
-                  fields={fields}
-                  buttonText="Сохранить"
-                  form={form}
-                  onChange={onChange}
-                  onSubmit={onSubmit}
-                />
-              }
-            >
-              <Route to="order" element={<Test />} />
-            </Profile>
+            <Form
+              fields={fields}
+              buttonText="Сохранить"
+              form={form}
+              onChange={onChange}
+              onSubmit={onSubmit}
+            />
           }
         />
-
+        <Route path="orders" element={<OrderInfo />} />
         {/*<Route path="/order/:id" element={<></>} />*/}
       </Routes>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <Outlet></Outlet>
+      </div>
     </>
   );
 }

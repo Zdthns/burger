@@ -17,8 +17,6 @@ import { wsAuthSendMessage } from "../../services/actions/wsUser";
 import {
   ADD_INGREDIENT_TO_CONSTRUCTOR,
   DELETE_INGREDIENT_FROM_CONSTRUCTOR,
-  //addIngredientToConstructor,
-  //DeleteIngredientFromConstructor,
 } from "../../services/actions/constructor.js";
 
 function BurgerConstructor({ createOrder }) {
@@ -75,7 +73,6 @@ function BurgerConstructor({ createOrder }) {
   const openOrder = () => {
     if (isAuth) {
       createOrder(orderData);
-      dispatch(wsAuthSendMessage(orderData));
     } else {
       navigate("/login");
     }

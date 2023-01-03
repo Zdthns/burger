@@ -31,6 +31,7 @@ function OrderInfo() {
   const orders = isProfile ? userOrders : allOrders;
   console.log(`isProfile: ${isProfile}`);
   console.log(`isFeed: ${isFeed}`);
+  console.log(userOrders);
 
   orders.map((el) => {
     return {

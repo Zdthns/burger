@@ -36,14 +36,14 @@ export const wsAuthConnectionClosed = () => {
   };
 };
 
-export const wsAuthGetMessage = (order) => {
+export const wsAuthGetOrders = (order) => {
   return {
     type: WS_AUTH_GET_ORDERS,
     payload: order,
   };
 };
 
-export const wsAuthSendMessage = (order) => {
+export const wsAuthSendOrders = (order) => {
   return {
     type: WS_AUTH_SEND_ORDERS,
     payload: order,

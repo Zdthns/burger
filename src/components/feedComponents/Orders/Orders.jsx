@@ -9,7 +9,7 @@ import Order from "../../Order/Order";
 export function Orders() {
   const location = useLocation();
   const orders = useSelector((store) => store.wsReducer.messages.orders);
-  //console.log(location);
+  //console.log(orders);
 
   return (
     <>

@@ -31,7 +31,7 @@ import { getCookie } from "../../utils/cookie";
 
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
-import Test from "../profileComponents/Test";
+import Test from "../../pages/Profile/Test";
 
 function App() {
   const { isAuth } = useSelector((store) => store.user);
@@ -104,12 +104,13 @@ function App() {
             path="/profile/*"
             element={
               <ProtectedRoute isAuth={isAuth}>
-                <Profile>
-                  <Route path="/orders" element={<Test />} />
-                </Profile>
+                <Profile />
               </ProtectedRoute>
             }
           />
+          {/*<ProtectedRoute isAuth={isAuth}>
+            <Route path="orders" element={<Test />} />
+          </ProtectedRoute>*/}
           <Route path="/register" element={<RegisterPage />} />
           <Route
             path="/forgotpassword"
@@ -151,3 +152,8 @@ function App() {
   );
 }
 export default App;
+{
+  /*/*<Profile>
+                  <Route path="/orders" element={<Test />} />
+                </Profile>*/
+}
