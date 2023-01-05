@@ -1,6 +1,6 @@
 import { getCookie } from "../../utils/cookie";
 
-export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
+export const socketMiddleware = (url, actions, isAuth = false) => {
   return (store) => {
     let socket = null;
 
@@ -12,7 +12,7 @@ export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
       onError,
       onMessage,
       wsClose,
-    } = wsActions;
+    } = actions;
 
     return (next) => (action) => {
       const { dispatch } = store;
@@ -20,10 +20,10 @@ export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
 
       if (type === wsInit) {
         if (!isAuth) {
-          socket = new WebSocket(wsUrl);
+          socket = new WebSocket(url);
         } else {
           const accessToken = getCookie("token");
-          socket = new WebSocket(`${wsUrl}?token=${accessToken}`);
+          socket = new WebSocket(`${url}?token=${accessToken}`);
         }
       }
 

@@ -17,12 +17,15 @@ function OrderInfo() {
   const history = useNavigate();
   const dispatch = useDispatch();
   let { id } = useParams();
-
-  const user = useSelector((store) => store.user);
-  const userOrders = useSelector((store) => store.wsUser.orders);
   const location = useLocation();
   const isProfile = location.pathname.includes("profile");
   const isFeed = location.pathname.includes("feed");
+
+  const user = useSelector((store) => store.user);
+  const userOrders = useSelector(
+    (store) => store.wsReducer.userMessages.orders
+  );
+
   const allOrders = useSelector((store) => store.wsReducer.messages.orders);
   const orders = isProfile ? userOrders : allOrders;
 

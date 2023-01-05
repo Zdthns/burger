@@ -9,6 +9,7 @@
 .section {
   display: flex;
   flex-direction: column;
+  padding: 50px;
   row-gap: 16px;
   overflow-y: scroll;
   max-height: 312px;

@@ -31,6 +31,10 @@
   color: white;
 }
 
+.activeLink {
+  color: white;
+}
+
 
 
 .additional_text {
@@ -46,9 +50,6 @@
   margin: 120px auto 0 auto;
 }
 
-.activeLink {
-  color: white;
-}
 
 .button {
   list-style: none;

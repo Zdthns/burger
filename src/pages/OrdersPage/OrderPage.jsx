@@ -7,20 +7,31 @@ import {
   wsUserConnectionStart,
   wsUserConnectionClosed,
 } from "../../services/actions/wsConect";
-
+import { getCookie } from "../../utils/cookie.js";
+import { wsUserUrl } from "../../utils/userApi.js";
 import Orders from "../../components/feedComponents/Orders/Orders";
 
 function OrderPage() {
   const dispatch = useDispatch();
-
+  const token = getCookie("token");
   useEffect(() => {
-    dispatch(wsUserConnectionStart());
+    dispatch(
+      wsUserConnectionStart(
+        `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
+      )
+      //  {
+      //  type: WS_USER_CONNECTION_START,
+      //  payload: `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`,
+      //}
+    );
+    //const ws = new WebSocket(wsUserUrl);
+    //console.log(ws.readyState);
     return () => {
       dispatch(wsUserConnectionClosed());
     };
   }, []);
 
-  const orders = useSelector((store) => store.messages.orders);
+  const orders = useSelector((store) => store.wsReducer.userMessages.orders);
   console.log(orders);
 
   return (

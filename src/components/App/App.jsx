@@ -17,7 +17,6 @@ import IngredientDetails from "../IngredientDetails/IngredientDetails";
 import { authUser, refreshToken } from "../../services/actions/user";
 import { getOrder } from "../../services/actions/order.js";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import Orders from "../profileComponents/UserOrders/UserOrders";
 import OrderDetails from "../OrderDetails/OrderDetails";
 import Modal from "../Modal/Modal";
 import Feed from "../../pages/Feed/Feed";
@@ -32,6 +31,7 @@ import { getCookie } from "../../utils/cookie";
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import OrderInfo from "../feedComponents/OrderInfo/OrderInfo";
+import OrderPage from "../../pages/OrdersPage/OrderPage";
 
 function App() {
   const { isAuth } = useSelector((store) => store.user);
@@ -42,12 +42,15 @@ function App() {
   const { currentIngredient } = useSelector((store) => store.ingredientDetails);
   const background = location.state?.background;
   const cookie = getCookie("token");
+
   const refreshTokenData = localStorage.getItem("token");
   const updateTokenSuccess = useSelector((store) => store.user.isTokenSuccess);
   const [ingredientOpen, setIngredientOpen] = React.useState(false);
   // order
   const closeModal = () => {
     dispatch(deleteIngredienData());
+
+    console.log(refreshTokenData);
 
     setOrderDetailsOpen(false);
     navigate("/");
@@ -105,7 +108,7 @@ function App() {
             element={
               <ProtectedRoute isAuth={isAuth}>
                 <Profile>
-                  <Route path="orders" element={<Orders />} />
+                  <Route path="orders" element={<OrderPage />} />
                 </Profile>
               </ProtectedRoute>
             }

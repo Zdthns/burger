@@ -6,6 +6,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const dispatch = useDispatch();
+  //const isProfile = location.pathname.includes("profile");
   const setActive = ({ isActive }) =>
     isActive ? style.activeLink : style.link;
 
@@ -15,8 +16,10 @@ function NavBar() {
   };
   return (
     <nav className={style.nav}>
-      <NavLink to="/profile">Профиль</NavLink>
-      <NavLink to="/profile/orders" className={setActive}>
+      <NavLink to="/profile" className={setActive}>
+        Профиль
+      </NavLink>
+      <NavLink to="orders" className={setActive}>
         История заказов
       </NavLink>
       <button
