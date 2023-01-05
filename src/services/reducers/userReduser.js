@@ -29,6 +29,7 @@ import {
 const initialState = {
   user: null,
   isAuth: false,
+
   isGetUserRequest: false,
   isGetUserSession: false,
   isGetUserFailed: false,
@@ -127,12 +128,15 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         IsRegisterUserRequest: true,
+        IsRegisterUserSuccess: false,
+        isAuth: false,
       };
     }
     case REGISTER_USER_SUCCESS: {
       return {
         ...state,
-        user: action.payload,
+        user: action.user,
+        IsRegisterUserRequest: false,
         IsRegisterUserSuccess: true,
         isAuth: true,
       };
@@ -141,6 +145,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         IsRegisterUserFailed: true,
+        IsRegisterUserSuccess: false,
       };
     }
     // запрос данных о пользователе
@@ -244,6 +249,7 @@ const userReducer = (state = initialState, action) => {
     case LOGOUT_USER_REQUEST: {
       return {
         ...state,
+
         isLogoutUserRequest: true,
         isLogoutUserFailed: false,
       };
@@ -252,6 +258,7 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuth: false,
+        user: null,
         isLogoutUserRequest: false,
         isLogoutUserFailed: false,
       };
@@ -265,12 +272,12 @@ const userReducer = (state = initialState, action) => {
       };
     }
     //прелоадер
-    case TOGGLE_IS_PRELOADER: {
-      return {
-        ...state,
-        TOGGLE_IS_PRELOADER: action.preloader,
-      };
-    }
+    //case TOGGLE_IS_PRELOADER: {
+    //  return {
+    //    ...state,
+    //    TOGGLE_IS_PRELOADER: action.preloader,
+    //  };
+    //}
     default: {
       return state;
     }

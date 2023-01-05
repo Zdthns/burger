@@ -1,30 +1,34 @@
 import { React, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  WS_CONNECTION_START,
-  WS_CONNECTION_CLOSED,
+  WS_USER_CONNECTION_START,
+  wsUserConnectionStart,
+  wsUserConnectionClosed,
 } from "../../../services/actions/wsConect";
 import { getCookie } from "../../../utils/cookie.js";
 import style from "./style.module.css";
 import Order from "../../Order/Order";
 
-import { wsAuthUrl } from "../../../services/actions/wsUser";
+import { wsUserUrl } from "../../../utils/userApi.js";
 
 export function UserOrders() {
   const dispatch = useDispatch();
-  const accessToken = getCookie("accessToken");
+  const token = getCookie("token");
+
+  console.log(token);
 
   useEffect(() => {
-    dispatch({
-      type: WS_CONNECTION_START,
-      payload: `${wsAuthUrl}?token=${accessToken?.replace("Bearer ", "")}`,
-    });
+    dispatch(
+      wsUserConnectionStart()
+      //  {
+      //  type: WS_USER_CONNECTION_START,
+      //  payload: `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`,
+      //}
+    );
     return () => {
-      dispatch({
-        type: WS_CONNECTION_CLOSED,
-      });
+      dispatch(wsUserConnectionClosed());
     };
-  }, [dispatch, accessToken]);
+  }, []);
 
   const orders = useSelector((state) => state.wsReducer.messages.orders);
 

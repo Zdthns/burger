@@ -2,18 +2,34 @@ export const WS_CONNECTION_START = "WS_CONNECTION_START";
 export const WS_CONNECTION_SUCCESS = "WS_CONNECTION_SUCCESS";
 export const WS_CONNECTION_ERROR = "WS_CONNECTION_ERROR";
 export const WS_CONNECTION_CLOSED = "WS_CONNECTION_CLOSED";
-export const WS_CONNECTION_CLOSE = "WS_CONNECTION_CLOSE";
-export const WS_GET_ORDERS = "WS_GET_ORDERS";
-export const WS_SEND_ORDERS = "WS_SEND_ORDERS";
+export const WS_GET_MESSAGE = "WS_GET_MESSAGE";
+
+export const WS_USER_CONNECTION_START = "WS_USER_CONNECTION_START";
+export const WS_USER_CONNECTION_SUCCESS = "WS_USER_CONNECTION_SUCCESS";
+export const WS_USER_CONNECTION_ERROR = "WS_USER_CONNECTION_ERROR";
+export const WS_USER_CONNECTION_CLOSED = "WS_USER_CONNECTION_CLOSED";
+export const WS_USER_GET_MESSAGE = "WS_USER_GET_MESSAGE";
 
 export const wsActions = {
   wsInit: WS_CONNECTION_START,
-  wsSendMessage: WS_SEND_ORDERS,
   onOpen: WS_CONNECTION_SUCCESS,
   onClose: WS_CONNECTION_CLOSED,
   onError: WS_CONNECTION_ERROR,
-  onMessage: WS_GET_ORDERS,
-  wsClose: WS_CONNECTION_CLOSE,
+  onMessage: WS_GET_MESSAGE,
+};
+
+export const wsUserActions = {
+  wsInit: WS_USER_CONNECTION_START,
+  onOpen: WS_USER_CONNECTION_SUCCESS,
+  onClose: WS_USER_CONNECTION_CLOSED,
+  onError: WS_USER_CONNECTION_ERROR,
+  onMessage: WS_USER_GET_MESSAGE,
+};
+
+export const wsConnectionStart = () => {
+  return {
+    type: WS_CONNECTION_START,
+  };
 };
 
 export const wsConnectionSuccess = () => {
@@ -34,19 +50,38 @@ export const wsConnectionClosed = () => {
   };
 };
 
-export const wsGetMessage = (order) => {
+export const wsGetMessage = (message) => {
   return {
-    type: WS_GET_ORDERS,
-    payload: order,
+    type: WS_GET_MESSAGE,
+    payload: message,
   };
 };
 
-export const wsClose = () => {
+export const wsUserConnectionStart = () => {
   return {
-    type: WS_CONNECTION_CLOSE,
+    type: WS_USER_CONNECTION_START,
   };
 };
 
-export const wsStart = () => {
-  return { type: WS_CONNECTION_START };
+export const wsUserConnectionSuccess = () => {
+  return {
+    type: WS_USER_CONNECTION_SUCCESS,
+  };
+};
+
+export const wsUserGetMessage = (userMessage) => {
+  return {
+    type: WS_USER_GET_MESSAGE,
+    payload: userMessage,
+  };
+};
+export const wsUserConnectionClosed = () => {
+  return {
+    type: WS_USER_CONNECTION_CLOSED,
+  };
+};
+export const wsUserConnectionError = () => {
+  return {
+    type: WS_USER_CONNECTION_ERROR,
+  };
 };

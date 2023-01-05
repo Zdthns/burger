@@ -11,6 +11,7 @@ import UserOrders from "../../components/profileComponents/UserOrders/UserOrders
 
 function Profile() {
   const { user } = useSelector((store) => store.user);
+
   const [form, setForm] = React.useState({
     name: user.name,
     login: user.email,
@@ -55,7 +56,7 @@ function Profile() {
               />
             }
           />
-          <Route path="/orders" element={<OrderPage />} />
+          <Route path="/orders" element={<UserOrders />} />
         </Routes>
       </div>
     </section>

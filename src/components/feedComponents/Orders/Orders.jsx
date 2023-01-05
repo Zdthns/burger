@@ -6,10 +6,9 @@ import { useSelector } from "react-redux";
 import style from "../style.module.css";
 import Order from "../../Order/Order";
 
-export function Orders(orders) {
+export function Orders({ data }) {
   const location = useLocation();
-
-  console.log(orders);
+  const orders = data;
 
   return (
     <>

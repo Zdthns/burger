@@ -1,3 +1,5 @@
+import { getCookie } from "./cookie";
+
 const api = "https://norma.nomoreparties.space/api";
 
 const checkResponse = (res) => {
@@ -12,7 +14,9 @@ export const getOrderNumber = (data) =>
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `${getCookie("token")}`,
     },
+
     body: JSON.stringify({
       ingredients: data,
     }),

@@ -50,30 +50,7 @@ export const requestCode = (email) => {
       .catch(() => dispatch({ type: FORGOT_CODE_ERROR }));
   };
 };
-// в разработке
-//export const requestPasswordReset = (email) => {
-//  return function (dispatch) {
-//    dispatch({ type: FORGOT_PASSWORD_REQUEST });
-//    getPasswordReset(email)
-//     .then((res) => {
-//        console.log(res);
-//        if (res && res.success) {
-//          dispatch({ type: FORGOT_PASSWORD_SUCCESS });
-//        }
-//      })
-//     .catch(() => dispatch({ type: FORGOT_PASSWORD_ERROR }));
-//  };
-//};
-//export const resetPassword = (data) => {
-//  return function (dispatch) {
-//    dispatch({ type: FORGOT_PASSWORD_REQUEST });
-//    setPasswordReset(data)
-//      .then(() => {
-//        dispatch({ type: FORGOT_PASSWORD__SUCCESS });
-//      })
-//      .catch(() => dispatch({ type: FORGOT_PASSWORD_ERROR }));
-//  };
-//};
+
 // регистрация
 
 export const registrationUser = (data) => {
@@ -94,6 +71,7 @@ export const registrationUser = (data) => {
       .catch(() => dispatch({ type: REGISTER_USER_ERROR }));
   };
 };
+
 //обновление токена
 export const refreshToken = () => {
   return function (dispatch) {
@@ -195,8 +173,33 @@ export const authUser = () => {
   };
 };
 
+// в разработке
+//export const requestPasswordReset = (email) => {
+//  return function (dispatch) {
+//    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+//    getPasswordReset(email)
+//     .then((res) => {
+//        console.log(res);
+//        if (res && res.success) {
+//          dispatch({ type: FORGOT_PASSWORD_SUCCESS });
+//        }
+//      })
+//     .catch(() => dispatch({ type: FORGOT_PASSWORD_ERROR }));
+//  };
+//};
+//export const resetPassword = (data) => {
+//  return function (dispatch) {
+//    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+//    setPasswordReset(data)
+//      .then(() => {
+//        dispatch({ type: FORGOT_PASSWORD__SUCCESS });
+//      })
+//      .catch(() => dispatch({ type: FORGOT_PASSWORD_ERROR }));
+//  };
+//};
+
 // загрузчик
-export const toggleIsPreloader = (preloader) => ({
-  type: TOGGLE_IS_PRELOADER,
-  preloader,
-});
+//export const toggleIsPreloader = (preloader) => ({
+//  type: TOGGLE_IS_PRELOADER,
+//  preloader,
+//});

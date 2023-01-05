@@ -3,17 +3,13 @@ import style from "./style.module.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
-import { wsAuthActions } from "../../../services/actions/wsUser";
-import { wsActions } from "../../../services/actions/wsConect";
+
 import { authUser } from "../../../services/actions/user";
 import {
-  WS_CONNECTION_START,
-  WS_CONNECTION_CLOSED,
+  wsConnectionStart,
+  wsConnectionClosed,
 } from "../../../services/actions/wsConect";
-import {
-  WS_AUTH_CONNECTION_START,
-  WS_AUTH_CONNECTION_CLOSED,
-} from "../../../services/actions/wsUser";
+
 import IngredientInfo from "../IngreditntInfo/IngredientInfo";
 import { formatDate } from "../../../utils/orders";
 
@@ -80,20 +76,20 @@ function OrderInfo() {
     if (!orderData) {
       if (isProfile) {
         dispatch(authUser());
-        dispatch({ type: WS_AUTH_CONNECTION_START });
+        dispatch(wsConnectionStart());
       }
       if (isFeed) {
-        dispatch({ type: WS_CONNECTION_START });
+        dispatch(wsConnectionStart());
       }
       history.replace(`${location.pathname}`);
     }
 
     return () => {
       if (isProfile) {
-        dispatch({ type: WS_AUTH_CONNECTION_CLOSED });
+        dispatch(wsConnectionClosed());
       }
       if (isFeed) {
-        dispatch({ type: WS_CONNECTION_CLOSED });
+        dispatch(wsConnectionClosed());
       }
     };
   }, [dispatch, orderData, history, orderInfo, location.pathname, user]);
