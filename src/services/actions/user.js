@@ -156,7 +156,7 @@ export const authUser = () => {
           user: res.user,
         });
       })
-      .then((res) => console.log(res.user))
+      .then((res) => console.log(res))
       .catch(() => {
         if (localStorage.getItem("jwt")) {
           dispatch(refreshToken());

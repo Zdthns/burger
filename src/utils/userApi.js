@@ -1,4 +1,4 @@
-import { getCookie } from "./cookie";
+import { getCookie, setCookie } from "./cookie";
 const api = "https://norma.nomoreparties.space/api";
 
 export const wsUrl = "wss://norma.nomoreparties.space/orders/all";
@@ -106,9 +106,16 @@ export const updateUser = (data) =>
 export const updateToken = () =>
   fetch(`${api}/auth/token`, {
     method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `${getCookie("token")}`,
+      Authorization: "Bearer " + setCookie("token"),
     },
-    body: JSON.stringify({ token: localStorage.getItem("jwt") }),
+    body: JSON.stringify({
+      token: localStorage.getItem("token"),
+    }),
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
   }).then(checkResponse);

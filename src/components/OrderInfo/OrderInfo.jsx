@@ -4,14 +4,14 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 
-import { authUser } from "../../../services/actions/user";
+import { authUser } from "../../services/actions/user";
 import {
   wsConnectionStart,
   wsConnectionClosed,
-} from "../../../services/actions/wsConect";
+} from "../../services/actions/wsConect";
 
-import IngredientInfo from "../IngreditntInfo/IngredientInfo";
-import { formatDate } from "../../../utils/orders";
+import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
+import { formatDate } from "../../utils/orders";
 
 function OrderInfo() {
   const history = useNavigate();

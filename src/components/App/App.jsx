@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useEffect, useState } from "react";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -30,7 +30,7 @@ import { getCookie } from "../../utils/cookie";
 
 import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
-import OrderInfo from "../feedComponents/OrderInfo/OrderInfo";
+import OrderInfo from "../OrderInfo/OrderInfo";
 import OrderPage from "../../pages/OrdersPage/OrderPage";
 
 function App() {
@@ -38,21 +38,22 @@ function App() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const [orderDetailsOpen, setOrderDetailsOpen] = React.useState(false);
+  const [orderDetailsOpen, setOrderDetailsOpen] = useState(false);
   const { currentIngredient } = useSelector((store) => store.ingredientDetails);
   const background = location.state?.background;
   const cookie = getCookie("token");
 
   const refreshTokenData = localStorage.getItem("token");
   const updateTokenSuccess = useSelector((store) => store.user.isTokenSuccess);
-  const [ingredientOpen, setIngredientOpen] = React.useState(false);
+  const [ingredientOpen, setIngredientOpen] = useState(false);
+  console.log(refreshTokenData);
   // order
   const closeModal = () => {
     dispatch(deleteIngredienData());
-
     setOrderDetailsOpen(false);
     navigate("/");
   };
+
   const openOrderModal = () => {
     setOrderDetailsOpen(true);
   };
@@ -62,12 +63,13 @@ function App() {
     setIngredientOpen(true);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!isAuth && localStorage.getItem("jwt")) {
       dispatch(authUser());
     }
   }, []);
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (!isAuth && refreshTokenData && cookie) {
       dispatch(authUser());
     }
@@ -84,6 +86,7 @@ function App() {
     dispatch(getOrder(orderData));
     openOrderModal();
   };
+
   return (
     <>
       <Routes location={background || location}>

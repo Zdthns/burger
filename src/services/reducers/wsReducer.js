@@ -2,11 +2,14 @@ import {
   WS_CONNECTION_SUCCESS,
   WS_CONNECTION_ERROR,
   WS_CONNECTION_CLOSED,
+  WS_CONNECTION_CLOSE,
   WS_GET_MESSAGE,
+  WS_SEND_MESSAGE,
   WS_USER_CONNECTION_SUCCESS,
   WS_USER_CONNECTION_ERROR,
   WS_USER_CONNECTION_CLOSED,
   WS_USER_GET_MESSAGE,
+  WS_USER_CONNECTION_START,
 } from "../actions/wsConect";
 
 const initialState = {
@@ -51,6 +54,11 @@ const wsReducer = (state = initialState, action) => {
       return {
         ...state,
         messages: { ...action.payload },
+      };
+    case WS_CONNECTION_CLOSE:
+      return {
+        ...initialState,
+        wsConnected: false,
       };
 
     case WS_USER_CONNECTION_SUCCESS:

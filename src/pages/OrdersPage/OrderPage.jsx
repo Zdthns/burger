@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   WS_USER_CONNECTION_START,
-  wsUserConnectionStart,
+  wsUserConnectionSuccess,
   wsUserConnectionClosed,
 } from "../../services/actions/wsConect";
 import { getCookie } from "../../utils/cookie.js";
@@ -17,23 +17,20 @@ function OrderPage() {
   const token = getCookie("token");
   useEffect(() => {
     dispatch(
-      {
-        type: WS_USER_CONNECTION_START,
-        payload: `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`,
-      }
-      //wsUserConnectionStart(
-      //  `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
+      wsUserConnectionSuccess(
+        `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
+      )
     );
-
-    //const ws = new WebSocket(wsUserUrl);
-    //console.log(ws.readyState);
     return () => {
       dispatch(wsUserConnectionClosed());
     };
   }, []);
-
+  //const ws = new WebSocket("wss://norma.nomoreparties.space/orders");
+  //console.log(ws.onmessage);
   const orders = useSelector((store) => store.wsReducer.userMessages.orders);
-  console.log(orders);
+  //ws.onmessage = (event) => {
+  //  console.log(`Получены данные: ${event.data}`);
+  //};
 
   return (
     <ul className={style.section}>
