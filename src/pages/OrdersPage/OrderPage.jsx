@@ -4,6 +4,7 @@ import style from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
+  WS_USER_CONNECTION_START,
   wsUserConnectionStart,
   wsUserConnectionClosed,
 } from "../../services/actions/wsConect";
@@ -16,14 +17,14 @@ function OrderPage() {
   const token = getCookie("token");
   useEffect(() => {
     dispatch(
-      wsUserConnectionStart(
-        `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
-      )
-      //  {
-      //  type: WS_USER_CONNECTION_START,
-      //  payload: `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`,
-      //}
+      {
+        type: WS_USER_CONNECTION_START,
+        payload: `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`,
+      }
+      //wsUserConnectionStart(
+      //  `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
     );
+
     //const ws = new WebSocket(wsUserUrl);
     //console.log(ws.readyState);
     return () => {

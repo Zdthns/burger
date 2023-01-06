@@ -50,8 +50,6 @@ function App() {
   const closeModal = () => {
     dispatch(deleteIngredienData());
 
-    console.log(refreshTokenData);
-
     setOrderDetailsOpen(false);
     navigate("/");
   };
@@ -102,7 +100,7 @@ function App() {
             }
           />{" "}
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/feed" element={<Feed />} />
+          <Route path="/feed/*" element={<Feed />} />
           <Route
             path="/profile/*"
             element={
@@ -134,14 +132,16 @@ function App() {
               </Modal>
             }
           />
+          {/*{background && (*/}
           <Route
-            path="/feed/:id/*"
+            path="/feed/:id"
             element={
               <Modal item=" text" title=" " onClose={closeModal}>
                 <OrderInfo />
               </Modal>
             }
           />
+          {/*)}*/}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
