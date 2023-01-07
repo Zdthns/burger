@@ -22,7 +22,7 @@ export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
         if (!isAuth) {
           socket = new WebSocket(wsUrl);
         } else {
-          const accessToken = getCookie("token");
+          const accessToken = getCookie("token").split("Bearer ")[1];
           socket = new WebSocket(`${wsUrl}?token=${accessToken}`);
         }
       }

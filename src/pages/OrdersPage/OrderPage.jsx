@@ -4,7 +4,7 @@ import style from "./style.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  WS_USER_CONNECTION_START,
+  wsUserConnectionStart,
   wsUserConnectionClosed,
 } from "../../services/actions/wsConect";
 import { getCookie } from "../../utils/cookie.js";
@@ -16,7 +16,7 @@ function OrderPage() {
   const token = getCookie("token");
   useEffect(() => {
     dispatch(
-      WS_USER_CONNECTION_START(
+      wsUserConnectionStart(
         `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
       )
     );

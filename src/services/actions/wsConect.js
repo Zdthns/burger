@@ -70,9 +70,12 @@ export const wsGetMessage = (message) => {
   };
 };
 
-export const wsUserConnectionStart = () => {
+export const wsUserConnectionStart = (url) => {
   return {
     type: WS_USER_CONNECTION_START,
+    payload: {
+      url,
+    },
   };
 };
 

@@ -46,7 +46,7 @@ function App() {
   const refreshTokenData = localStorage.getItem("token");
   const updateTokenSuccess = useSelector((store) => store.user.isTokenSuccess);
   const [ingredientOpen, setIngredientOpen] = useState(false);
-  console.log(refreshTokenData);
+
   // order
   const closeModal = () => {
     dispatch(deleteIngredienData());

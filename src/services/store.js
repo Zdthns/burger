@@ -3,11 +3,11 @@ import {
   applyMiddleware,
   compose,
 } from "redux";
-import { rootReducer } from "./reducers/root.js";
+import { rootReducer } from "../services/reducers/root.js";
 import thunk from "redux-thunk";
-import { socketMiddleware } from "./middleware/socketMiddleware";
+import { socketMiddleware } from "../services/middleware/socketMiddleware";
 import { wsUrl, wsUserUrl } from "../utils/userApi";
-import { wsActions, wsUserActions } from "./actions/wsConect";
+import { wsActions, wsUserActions } from "./../services/actions/wsConect";
 
 const composeEnhancers =
   typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
