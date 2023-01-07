@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   WS_USER_CONNECTION_START,
-  wsUserConnectionSuccess,
   wsUserConnectionClosed,
 } from "../../services/actions/wsConect";
 import { getCookie } from "../../utils/cookie.js";
@@ -17,7 +16,7 @@ function OrderPage() {
   const token = getCookie("token");
   useEffect(() => {
     dispatch(
-      wsUserConnectionSuccess(
+      WS_USER_CONNECTION_START(
         `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
       )
     );

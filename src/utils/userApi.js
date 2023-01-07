@@ -109,12 +109,12 @@ export const updateToken = () =>
     mode: "cors",
     cache: "no-cache",
     credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + setCookie("token"),
-    },
+    //headers: {
+    //  "Content-Type": "application/json",
+    //  Authorization: getCookie("token"),
+    //},
     body: JSON.stringify({
-      token: localStorage.getItem("token"),
+      token: localStorage.getItem("jwt"),
     }),
     redirect: "follow",
     referrerPolicy: "no-referrer",
