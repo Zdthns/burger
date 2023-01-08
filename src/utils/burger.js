@@ -1,10 +1,5 @@
 import { getCookie } from "./cookie";
-
-const api = "https://norma.nomoreparties.space/api";
-
-const checkResponse = (res) => {
-  return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
-};
+import { api, checkResponse } from "./userApi";
 
 export const getIngredientsApi = () =>
   fetch(`${api}/ingredients`).then(checkResponse);

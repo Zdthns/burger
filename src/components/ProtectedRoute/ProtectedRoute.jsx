@@ -1,13 +1,17 @@
-import { Route, redirect, Navigate } from "react-router-dom";
+import { Route, redirect, Navigate, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-function RouterProvider({ children, isAuth, ...props }) {
-  const redirectPath = "/login";
+function RouterProvider({ children, anonymous = false }) {
+  const { isAuth } = useSelector((store) => store.user);
+  const location = useLocation();
+  const from = location.state?.from || "/";
 
-  if (!isAuth) {
-    return <Navigate to={redirectPath} replace />;
+  if (!anonymous && !isAuth) {
+    return <Navigate to="/login" state={{ from: location }} />;
   }
-
+  if (anonymous && isAuth) {
+    return <Navigate to={from} />;
+  }
   return children;
 }
 

@@ -1,10 +1,10 @@
 import { getCookie, setCookie } from "./cookie";
-const api = "https://norma.nomoreparties.space/api";
+export const api = "https://norma.nomoreparties.space/api";
 
 export const wsUrl = "wss://norma.nomoreparties.space/orders/all";
 export const wsUserUrl = "wss://norma.nomoreparties.space/orders";
 
-const checkResponse = (res) => {
+export const checkResponse = (res) => {
   return res.ok ? res.json() : res.json().then((err) => Promise.reject(err));
 };
 
