@@ -6,12 +6,10 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const dispatch = useDispatch();
-  //const isProfile = location.pathname.includes("profile");
   const setActive = ({ isActive }) =>
     isActive ? style.activeLink : style.link;
 
   const logout = () => {
-    console.log("выход");
     dispatch(logoutUser());
   };
   return (
