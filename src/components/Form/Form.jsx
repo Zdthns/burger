@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useState } from "react";
 
 import style from "./style.module.css";
 import PropTypes from "prop-types";
@@ -7,7 +7,15 @@ import {
   Input,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
-function Form({ fields, buttonText, form, onChange, onSubmit }) {
+function Form({
+  fields,
+  buttonText,
+  form,
+  onChange,
+  onSubmit,
+  resetForm,
+  buttonVisible,
+}) {
   return (
     <form className={style.form} onSubmit={onSubmit}>
       {fields.map((elem) => (
@@ -18,11 +26,20 @@ function Form({ fields, buttonText, form, onChange, onSubmit }) {
           value={form[elem.name]}
           placeholder={elem.placeholder}
           onChange={onChange}
+          icon={elem.icon}
         />
       ))}
-      <Button type="primary" size="medium">
-        {buttonText}
-      </Button>
+      <div className={style.buttons}>
+        {" "}
+        <Button type="primary" size="medium">
+          {buttonText}
+        </Button>
+        {buttonVisible && (
+          <Button type="primary" size="medium" onClick={resetForm}>
+            Отмена
+          </Button>
+        )}
+      </div>
     </form>
   );
 }
