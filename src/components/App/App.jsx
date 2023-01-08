@@ -32,6 +32,7 @@ import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import OrderInfo from "../OrderInfo/OrderInfo";
 import OrderPage from "../../pages/OrdersPage/OrderPage";
+import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
 
 function App() {
   const { isAuth } = useSelector((store) => store.user);
@@ -51,7 +52,7 @@ function App() {
   const closeModal = () => {
     dispatch(deleteIngredienData());
     setOrderDetailsOpen(false);
-    navigate("/");
+    navigate(-1);
   };
 
   const openOrderModal = () => {
@@ -109,7 +110,16 @@ function App() {
             element={
               <ProtectedRoute isAuth={isAuth}>
                 <Profile>
-                  <Route path="orders" element={<OrderPage />} />
+                  <Route
+                    path="orders"
+                    element={
+                      <OrderPage>
+                        <Route path="/profile/orders/:id">
+                          <OrderInfo />
+                        </Route>
+                      </OrderPage>
+                    }
+                  />
                 </Profile>
               </ProtectedRoute>
             }
@@ -135,7 +145,6 @@ function App() {
               </Modal>
             }
           />
-          {/*{background && (*/}
           <Route
             path="/feed/:id"
             element={
@@ -144,10 +153,23 @@ function App() {
               </Modal>
             }
           />
-          {/*)}*/}
+          <Route
+            path="/profile/orders/:id"
+            element={
+              <Modal item=" text" title=" " onClose={closeModal}>
+                <OrderInfo />
+              </Modal>
+            }
+          />
+          {/*<Route path="/profile/orders/:id">
+            <Modal onClose={closeModal}>
+              <IngredientInfo />
+            </Modal>
+          </Route>*/}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+
       {orderDetailsOpen && (
         <Modal title="" onClose={closeModal}>
           <OrderDetails />
