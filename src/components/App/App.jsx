@@ -123,18 +123,12 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/ingredients/:id" element={<IngredientPage />} />
+          <Route path="/ingredients/*" element={<IngredientPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/feed/*" element={<Feed />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route
-            path="/forgotpassword"
-            element={
-              <ForgotPassword>
-                <Route path="resetpassword" element={<ResetPassword />} />
-              </ForgotPassword>
-            }
-          />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
           <Route
             path="/ingredients/:id"
             element={
@@ -163,11 +157,6 @@ function App() {
               </Modal>
             }
           />
-          {/*<Route path="/profile/orders/:id">
-            <Modal onClose={closeModal}>
-              <IngredientInfo />
-            </Modal>
-          </Route>*/}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
