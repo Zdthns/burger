@@ -8,6 +8,7 @@ import IngredientCard from "../IngredientCard/IngredientCard";
 
 const CardBlock = React.forwardRef(({ type, name, onClick }, ref) => {
   const ingredients = useSelector((state) => state.ingredients.ingredients);
+
   return (
     <li ref={ref}>
       <h2 className="text text_type_main-medium text_color_primary">{name}</h2>

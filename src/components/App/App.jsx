@@ -33,6 +33,7 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import OrderInfo from "../OrderInfo/OrderInfo";
 import OrderPage from "../../pages/OrdersPage/OrderPage";
 import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
+import IngredientPage from "../../pages/IngredientPage/IngredientPage";
 
 function App() {
   const { isAuth } = useSelector((store) => store.user);
@@ -103,8 +104,6 @@ function App() {
               </main>
             }
           />{" "}
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/feed/*" element={<Feed />} />
           <Route
             path="/profile/*"
             element={
@@ -124,6 +123,9 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route path="/ingredients/:id" element={<IngredientPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/feed/*" element={<Feed />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route
             path="/forgotpassword"
@@ -134,7 +136,7 @@ function App() {
             }
           />
           <Route
-            path="/ingredients/*"
+            path="/ingredients/:id"
             element={
               <Modal
                 item={currentIngredient}

@@ -1,8 +1,8 @@
 import React from "react";
+import style from "./style.module.css";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import IngredientDetails from "../components/ingredient-details/ingredient-details";
-import ingredientStyles from "./ingredient.module.css";
+import IngredientDetails from "../../components/IngredientDetails/IngredientDetails";
 
 const IngredientPage = () => {
   const { id } = useParams();
@@ -15,7 +15,7 @@ const IngredientPage = () => {
   );
 
   return (
-    <div className={ingredientStyles.container}>
+    <div className={style.container}>
       {currentIngredient && (
         <IngredientDetails ingredient={currentIngredient} />
       )}
