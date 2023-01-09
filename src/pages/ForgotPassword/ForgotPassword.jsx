@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import {
   EmailInput,
   Button,
@@ -13,6 +13,7 @@ function ForgotPassword() {
   const [form, setForm] = React.useState({ email: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { isReplacePassword, isAuth } = useSelector((store) => store.user);
 
   const fields = [
@@ -26,14 +27,16 @@ function ForgotPassword() {
   const onSubmit = (evt) => {
     evt.preventDefault();
     dispatch(requestCode(form.email));
+    return navigate("/resetpassword", { state: { from: location } });
+    //return <Navigate to="/resetpassword" state={{ from: location }} />;
   };
-
-  if (isReplacePassword) {
-    return navigate("/resetpassword", { replace: true });
-  }
-  if (isAuth) {
-    return navigate("/", { replace: true });
-  }
+  //navigate("/resetpassword", { replace: true });
+  //if (isReplacePassword) {
+  //  return navigate("/resetpassword", { replace: true });
+  //}
+  //if (isAuth) {
+  //  return navigate("/", { replace: true });
+  //}
   return (
     <section className={style.wrapper}>
       <h1>Восстановление пароля</h1>

@@ -3,23 +3,17 @@ import { logoutUser } from "../../../services/actions/user";
 import style from "./style.module.css";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import CustomLink from "./CustomLink";
 
 function NavBar() {
   const dispatch = useDispatch();
-  const setActive = ({ isActive }) =>
-    isActive ? style.activeLink : style.link;
-
   const logout = () => {
     dispatch(logoutUser());
   };
   return (
     <nav className={style.nav}>
-      <NavLink to="/profile" className={setActive}>
-        Профиль
-      </NavLink>
-      <NavLink to="orders" className={setActive}>
-        История заказов
-      </NavLink>
+      <CustomLink to="/profile">Профиль</CustomLink>
+      <CustomLink to="/profile/orders">История заказов</CustomLink>
       <button
         type="button"
         className={`${style.button} text text_type_main-medium text_color_inactive`}

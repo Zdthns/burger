@@ -42,7 +42,6 @@ export const requestCode = (email) => {
     dispatch({ type: FORGOT_CODE_REQUEST });
     getPasswordReset(email)
       .then((res) => {
-        console.log(res);
         if (res && res.success) {
           dispatch({ type: FORGOT_CODE_SUCCESS });
         }
