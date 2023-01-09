@@ -162,14 +162,12 @@ function App() {
               </Modal>
             }
           />
-          {/*</>
-      )}*/}
-          {orderDetailsOpen && (
-            <Modal title="" onClose={closeModal}>
-              <OrderDetails />
-            </Modal>
-          )}
         </>
+      )}
+      {orderDetailsOpen && (
+        <Modal title="" onClose={closeModal}>
+          <OrderDetails />
+        </Modal>
       )}
     </>
   );
