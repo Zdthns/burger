@@ -9,16 +9,16 @@ const IngredientPage = () => {
   const ingredients = useSelector(
     (store) => store.ingredientDetails.currentIngredient
   );
-  const currentIngredient = React.useMemo(
-    () => ingredients.find((item) => item._id === id),
-    [ingredients]
-  );
+  console.log(ingredients);
+
+  //const currentIngredient = React.useMemo(
+  //  () => ingredients.find((item) => item._id === id),
+  //  [ingredients]
+  //);
 
   return (
     <div className={style.container}>
-      {currentIngredient && (
-        <IngredientDetails ingredient={currentIngredient} />
-      )}
+      {ingredients && <IngredientDetails ingredient={ingredients} />}
     </div>
   );
 };

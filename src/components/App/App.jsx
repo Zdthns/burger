@@ -134,7 +134,6 @@ function App() {
       </Routes>
       {background && (
         <>
-          {" "}
           <Route
             path="/ingredients/:id"
             element={
@@ -163,14 +162,17 @@ function App() {
               </Modal>
             }
           />
+          {/*</>
+      )}*/}
+          {orderDetailsOpen && (
+            <Modal title="" onClose={closeModal}>
+              <OrderDetails />
+            </Modal>
+          )}
         </>
-      )}
-      {orderDetailsOpen && (
-        <Modal title="" onClose={closeModal}>
-          <OrderDetails />
-        </Modal>
       )}
     </>
   );
 }
+
 export default App;
