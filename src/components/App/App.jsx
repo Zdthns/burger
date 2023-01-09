@@ -129,6 +129,12 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+      {background && (
+        <>
+          {" "}
           <Route
             path="/ingredients/:id"
             element={
@@ -157,10 +163,8 @@ function App() {
               </Modal>
             }
           />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-
+        </>
+      )}
       {orderDetailsOpen && (
         <Modal title="" onClose={closeModal}>
           <OrderDetails />
