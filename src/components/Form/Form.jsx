@@ -31,11 +31,16 @@ function Form({
       ))}
       <div className={style.buttons}>
         {" "}
-        <Button type="primary" size="medium">
+        <Button htmlType="button" type="primary" size="medium">
           {buttonText}
         </Button>
         {buttonVisible && (
-          <Button type="primary" size="medium" onClick={resetForm}>
+          <Button
+            htmlType="button"
+            type="primary"
+            size="medium"
+            onClick={resetForm}
+          >
             Отмена
           </Button>
         )}

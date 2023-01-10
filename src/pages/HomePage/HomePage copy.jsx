@@ -34,10 +34,6 @@ function HomePage() {
   const orderVisible = useSelector((state) => state.modals.orderVisible);
   const order = useSelector((state) => state.order.order);
 
-  React.useEffect(() => {
-    dispatch(getIngredients());
-  }, [dispatch]);
-
   const closeIngredientDetails = () => {
     dispatch(closeIngredientDetailsModals());
   };
