@@ -45,10 +45,11 @@ function Form({
 }
 
 Form.propTypes = {
-  fields: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
-  buttonText: PropTypes.string.isRequired,
+  fields: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)),
+  buttonText: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  //resetForm: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  form: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 export default Form;

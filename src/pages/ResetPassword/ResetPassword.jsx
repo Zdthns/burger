@@ -7,9 +7,7 @@ function ResetPassword() {
   const navigate = useNavigate();
   const location = useLocation();
   const fromPage = location.state?.from?.pathname;
-  console.log(fromPage);
   const redirected = !fromPage;
-  console.log(redirected);
   function resetPassword() {
     if (fromPage) {
       return <ResetPasswordForm />;

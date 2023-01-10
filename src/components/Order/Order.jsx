@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { formatDate } from "../../utils/orders";
 import { useMemo } from "react";
-import Ingredient from "../profileComponents/ingredient/Ingredient";
+import Ingredient from "../feedComponents/ingredient/Ingredient";
 
 export function Order({
   status,
