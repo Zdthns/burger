@@ -12,6 +12,6 @@ export default PropTypes.shape({
   image: PropTypes.string,
   image_mobile: PropTypes.string,
   image_large: PropTypes.string,
-  //elem: PropTypes.object,
+  elem: PropTypes.object,
   __v: PropTypes.number,
 });

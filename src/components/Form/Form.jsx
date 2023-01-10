@@ -31,12 +31,12 @@ function Form({
       ))}
       <div className={style.buttons}>
         {" "}
-        <Button htmlType="button" type="primary" size="medium">
+        <Button htmlType="submit" type="primary" size="medium">
           {buttonText}
         </Button>
         {buttonVisible && (
           <Button
-            htmlType="button"
+            htmlType="reset"
             type="primary"
             size="medium"
             onClick={resetForm}
@@ -54,7 +54,6 @@ Form.propTypes = {
   buttonText: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired,
   form: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 export default Form;
