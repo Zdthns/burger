@@ -4,8 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 
 function IngredientDetails() {
-  const ingredient = useSelector(
-    (store) => store.ingredientDetails.currentIngredient
+  const { id } = useParams();
+  const ingredient = useSelector((store) =>
+    store.ingredients.ingredients.find((item) => item._id === id)
   );
 
   return (

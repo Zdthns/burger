@@ -14,7 +14,7 @@ import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
 import { formatDate } from "../../utils/orders";
 
 function OrderInfo() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   let { id } = useParams();
   const location = useLocation();
@@ -84,7 +84,6 @@ function OrderInfo() {
       if (isFeed) {
         dispatch(wsConnectionStart());
       }
-      history.replace(`${location.pathname}`);
     }
 
     return () => {
@@ -95,43 +94,43 @@ function OrderInfo() {
         dispatch(wsConnectionClosed());
       }
     };
-  }, [dispatch, orderData, history, orderInfo, location.pathname, user]);
+  }, [dispatch, orderData, orderInfo, location.pathname, user]);
 
   return (
     <>
       <p className={`text text_type_digits-default mb-10 ${style.number}`}>
-        {orderInfo.totalOrder}
+        {orderInfo?.totalOrder}
       </p>
-      <h3 className="text text_type_main-medium mb-3">{orderInfo.name}</h3>
-      {orderInfo.status === "done" && (
+      <h3 className="text text_type_main-medium mb-3">{orderInfo?.name}</h3>
+      {orderInfo?.status === "done" && (
         <p className={`text text_type_main-default mb-15 ${style.done}`}>
           Выполнен
         </p>
       )}
-      {orderInfo.status === "created" && (
+      {orderInfo?.status === "created" && (
         <p className="text text_type_main-default mb-15">Создан</p>
       )}
-      {orderInfo.status === "pending" && (
+      {orderInfo?.status === "pending" && (
         <p className="text text_type_main-default mb-15">Готовится</p>
       )}
       <h3 className="text text_type_main-medium mb-6">Состав:</h3>
       <section className={style.section}>
-        {orderInfo.count &&
-          [...new Set(orderInfo.ingredients)].map((ingredient, index) => (
+        {orderInfo?.count &&
+          [...new Set(orderInfo?.ingredients)].map((ingredient, index) => (
             <IngredientInfo
               ingredient={ingredient}
               key={index}
-              count={orderInfo.count}
+              count={orderInfo?.count}
             />
           ))}
       </section>
       <div className={`mt-10 ${style.techinfo}`}>
         <p className="text text_type_main-default text_color_inactive">
-          {formatDate(orderInfo.createdAt)}
+          {formatDate(orderInfo?.createdAt)}
         </p>
         <div className={`ml-6 ${style.price}`}>
           <p className="text text_type_digits-default mr-2">
-            {orderInfo.totalOrder}
+            {orderInfo?.totalOrder}
           </p>
           <CurrencyIcon type="primary" />
         </div>

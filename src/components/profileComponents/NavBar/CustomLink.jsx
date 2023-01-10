@@ -3,7 +3,6 @@ import { Link, useMatch } from "react-router-dom";
 
 function CustomLink({ children, to, ...props }) {
   const match = useMatch({ path: to, end: true });
-  console.log(match);
 
   return (
     <Link

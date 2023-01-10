@@ -18,7 +18,7 @@ const formatNumber = (number, words) =>
       : [2, 0, 1, 1, 1, 2][number % 10 < 5 ? Math.abs(number) % 10 : 5]
   ];
 
-export const formatDate = (date) => {
+export const formatDate = (date = "") => {
   const now = Date.now();
   const createdAt = Date.parse(date);
   const delta = (now - createdAt) / (24 * 60 * 60 * 1000);

@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 function RouterProvider({ children, anonymous = false }) {
   const { isAuth } = useSelector((store) => store.user);
   const location = useLocation();
-  const from = location.state?.from || "/";
 
   if (!anonymous && !isAuth) {
-    return <Navigate to="/login" state={{ from: location }} />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
   if (anonymous && isAuth) {
+    const from = location.state?.from || { pathname: "/" };
     return <Navigate to={from} />;
   }
   return children;

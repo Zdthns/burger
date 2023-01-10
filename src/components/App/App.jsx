@@ -32,8 +32,11 @@ import BurgerIngredients from "../BurgerIngredients/BurgerIngredients";
 import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import OrderInfo from "../OrderInfo/OrderInfo";
 import OrderPage from "../../pages/OrdersPage/OrderPage";
-import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
-import IngredientPage from "../../pages/IngredientPage/IngredientPage";
+
+import {
+  wsConnectionClosed,
+  wsConnectionStart,
+} from "../../services/actions/wsConect";
 
 function App() {
   const { isAuth } = useSelector((store) => store.user);
@@ -89,6 +92,12 @@ function App() {
     openOrderModal();
   };
 
+  useEffect(() => {
+    dispatch(wsConnectionStart());
+    return () => {
+      dispatch(wsConnectionClosed());
+    };
+  }, [dispatch]);
   return (
     <>
       <Routes location={background || location}>
@@ -123,9 +132,10 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="/ingredients/*" element={<IngredientPage />} />
+          <Route path="/ingredients/:id" element={<IngredientDetails />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/feed/*" element={<Feed />} />
+          <Route path="/feed/" element={<Feed />} />
+          <Route path="/feed/:id" element={<OrderInfo />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route path="/resetpassword" element={<ResetPassword />} />
@@ -133,7 +143,7 @@ function App() {
         </Route>
       </Routes>
       {background && (
-        <>
+        <Routes>
           <Route
             path="/ingredients/:id"
             element={
@@ -162,7 +172,7 @@ function App() {
               </Modal>
             }
           />
-        </>
+        </Routes>
       )}
       {orderDetailsOpen && (
         <Modal title="" onClose={closeModal}>

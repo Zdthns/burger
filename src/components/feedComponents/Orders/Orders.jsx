@@ -15,9 +15,9 @@ export function Orders({ data }) {
       {orders.map((order) => {
         return (
           <Link
+            state={{ background: location }}
             to={{
               pathname: `${location.pathname}/${order._id}`,
-              state: { background: location },
             }}
             className={style.link}
             key={order._id}

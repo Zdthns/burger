@@ -31,9 +31,9 @@ function IngredientCard({ elem, onClick }) {
   return (
     <Link
       key={ingredientId}
+      state={{ background: location }}
       to={{
-        pathname: `/ingredients/:id${ingredientId}`,
-        state: { background: location, state: null },
+        pathname: `/ingredients/${ingredientId}`,
       }}
       className={style.card}
       id={elem._id}
