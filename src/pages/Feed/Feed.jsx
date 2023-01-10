@@ -18,6 +18,7 @@ function Feed() {
     };
   }, [dispatch]);
   const orders = useSelector((store) => store.wsReducer.messages.orders);
+
   return (
     <section className={style.page}>
       <article className={`pl-2 pr-2 ${style.feed_section}`}>

@@ -31,7 +31,7 @@ export default function Total({ openOrder }) {
         type="primary"
         size="medium"
         onClick={openOrder}
-        htmlType="button"
+        htmlType="submit"
         disabled={!constructorIngredients.length || !bun}
       >
         Оформить заказ

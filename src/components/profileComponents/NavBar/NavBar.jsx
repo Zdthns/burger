@@ -3,7 +3,7 @@ import { logoutUser } from "../../../services/actions/user";
 import style from "./style.module.css";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
-import CustomLink from "./CustomLink";
+import CustomLink from "../../../utils/CustomLink";
 
 function NavBar() {
   const dispatch = useDispatch();
