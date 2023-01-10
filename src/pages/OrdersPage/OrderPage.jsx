@@ -24,12 +24,8 @@ function OrderPage() {
       dispatch(wsUserConnectionClosed());
     };
   }, []);
-  //const ws = new WebSocket("wss://norma.nomoreparties.space/orders");
-  //console.log(ws.onmessage);
+
   const orders = useSelector((store) => store.wsReducer.userMessages.orders);
-  //ws.onmessage = (event) => {
-  //  console.log(`Получены данные: ${event.data}`);
-  //};
 
   return (
     <ul className={style.section}>

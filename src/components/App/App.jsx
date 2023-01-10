@@ -33,11 +33,6 @@ import BurgerConstructor from "../BurgerConstructor/BurgerConstructor";
 import OrderInfo from "../OrderInfo/OrderInfo";
 import OrderPage from "../../pages/OrdersPage/OrderPage";
 
-import {
-  wsConnectionClosed,
-  wsConnectionStart,
-} from "../../services/actions/wsConect";
-
 function App() {
   const { isAuth } = useSelector((store) => store.user);
   const dispatch = useDispatch();
@@ -92,12 +87,6 @@ function App() {
     openOrderModal();
   };
 
-  useEffect(() => {
-    dispatch(wsConnectionStart());
-    return () => {
-      dispatch(wsConnectionClosed());
-    };
-  }, [dispatch]);
   return (
     <>
       <Routes location={background || location}>
