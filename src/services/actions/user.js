@@ -1,13 +1,13 @@
 import { setCookie } from "../../utils/cookie.js";
 import {
   getPasswordReset,
-  //setPasswordReset,
   getRegistrationUser,
   getUserLogin,
   getUserLogout,
   getUser,
   updateUser,
   updateToken,
+  setNewPassword,
 } from "../../utils/userApi.js";
 
 export const FORGOT_CODE_REQUEST = "FORGOT_CODE_REQUEST";
@@ -16,6 +16,7 @@ export const FORGOT_CODE_SUCCESS = "FORGOT_CODE_SUCCESS";
 export const FORGOT_PASSWORD__SUCCESS = "FORGOT_CODE_SUCCESS";
 export const FORGOT_PASSWORD_REQUEST = "FORGOT_PASSWORD_REQUEST";
 export const FORGOT_PASSWORD_ERROR = "FORGOT_PASSWORD_ERROR";
+
 export const LOGIN_USER_REQUEST = "LOGIN_USER_REQUEST";
 export const LOGIN_USER_SUCCESS = "LOGIN_USER_SUCCESS";
 export const LOGIN_USER_ERROR = "LOGIN_USER_ERROR";
@@ -176,25 +177,25 @@ export const authUser = () => {
 //  return function (dispatch) {
 //    dispatch({ type: FORGOT_PASSWORD_REQUEST });
 //    getPasswordReset(email)
-//     .then((res) => {
+//      .then((res) => {
 //        console.log(res);
 //        if (res && res.success) {
 //          dispatch({ type: FORGOT_PASSWORD_SUCCESS });
 //        }
 //      })
-//     .catch(() => dispatch({ type: FORGOT_PASSWORD_ERROR }));
-//  };
-//};
-//export const resetPassword = (data) => {
-//  return function (dispatch) {
-//    dispatch({ type: FORGOT_PASSWORD_REQUEST });
-//    setPasswordReset(data)
-//      .then(() => {
-//        dispatch({ type: FORGOT_PASSWORD__SUCCESS });
-//      })
 //      .catch(() => dispatch({ type: FORGOT_PASSWORD_ERROR }));
 //  };
 //};
+export const resetPassword = (data) => {
+  return function (dispatch) {
+    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+    setNewPassword(data)
+      .then(() => {
+        dispatch({ type: FORGOT_PASSWORD__SUCCESS });
+      })
+      .catch(() => dispatch({ type: FORGOT_PASSWORD_ERROR }));
+  };
+};
 
 // загрузчик
 //export const toggleIsPreloader = (preloader) => ({

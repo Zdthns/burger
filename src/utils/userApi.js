@@ -68,15 +68,14 @@ export const getPasswordReset = async (email) => {
 };
 //в разработке
 
-//export function setPasswordReset(data) {
-//  console.log(data);
+export function setNewPassword(data) {
+  return fetch(`${api}/password-reset/reset`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  }).then(checkResponse);
+}
 
-//  return fetch(`${api}/password-reset/reset`, {
-//    method: "POST",
-//    headers: { "Content-Type": "application/json" },
-//    body: JSON.stringify(data),
-//  });
-//}
 //получение  данных пользователя
 export const getUser = () =>
   fetch(`${api}/auth/user`, {
