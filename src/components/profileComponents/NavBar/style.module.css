@@ -1,16 +1,11 @@
 .nav {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   margin-bottom: 80px;
+  min-width: 320px;
   font-style: normal;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 30px;
-  padding-top: 80px;
-}
 
-.profile_link {
-  text-decoration: none;
-  color: #8585AD;
-  margin-bottom: 30px;
 }
 
 
@@ -19,17 +14,14 @@
   color: #8585AD;
 }
 
-
-
-.link {
+.list {
+  height: 64px;
+  width: 320px;
   list-style: none;
   text-decoration: none;
   color: #8585AD;
 }
 
-.link:focus {
-  color: white;
-}
 
 .activeLink {
   color: white;

@@ -19,9 +19,9 @@ function Profile() {
   const dispatch = useDispatch();
 
   const fields = [
-    { name: "name", placeholder: "", type: "text", icon: "EditIcon" },
-    { name: "login", placeholder: "", type: "text", icon: "EditIcon" },
-    { name: "password", placeholder: "", type: "password", icon: "" },
+    { name: "name", placeholder: "имя", type: "text", icon: "EditIcon" },
+    { name: "login", placeholder: "логин", type: "text", icon: "EditIcon" },
+    { name: "password", placeholder: "пароль", type: "password", icon: "" },
   ];
 
   const onChange = (evt) => {
@@ -43,7 +43,11 @@ function Profile() {
     <section className={style.section}>
       <div className={style.profile_wrapper}>
         <div>
-          <NavBar />
+          <div className={style.nav}>
+            {" "}
+            <NavBar />
+          </div>
+
           <p className={style.profile_caption}>
             В этом разделе вы можете изменить свои персональные данные
           </p>

@@ -12,15 +12,27 @@ function NavBar() {
   };
   return (
     <nav className={style.nav}>
-      <CustomLink to="/profile">Профиль</CustomLink>
-      <CustomLink to="/profile/orders">История заказов</CustomLink>
-      <button
-        type="button"
-        className={`${style.button} text text_type_main-medium text_color_inactive`}
-        onClick={logout}
-      >
-        Выход
-      </button>
+      <ul>
+        <li className={style.list}>
+          {" "}
+          <CustomLink to="/profile">Профиль</CustomLink>
+        </li>
+        <li className={style.list}>
+          {" "}
+          <CustomLink to="/profile/orders">История заказов</CustomLink>
+        </li>
+        <li className={style.list}>
+          {" "}
+          <button
+            type="button"
+            className={`${style.button} text text_type_main-medium text_color_inactive`}
+            onClick={logout}
+          >
+            {" "}
+            Выход
+          </button>
+        </li>
+      </ul>
     </nav>
   );
 }

@@ -1,16 +1,9 @@
 .nav {
-  margin-bottom: 80px;
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 30px;
-
-}
-
-.profile_link {
-  text-decoration: none;
-  color: #8585AD;
-  margin-bottom: 30px;
+  margin-right: 50px;
 }
 
 .section {
@@ -22,14 +15,17 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
-  width: 70%;
-  justify-content: space-between;
+  width: 90%;
+  justify-content: flex-start;
   align-items: center;
 }
 
 .profile_caption {
   width: 320px;
   color: #8585AD;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .form {
