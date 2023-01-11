@@ -139,7 +139,8 @@
   color: #00CCCC;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 153px;
+  height: 320px;
+
 }
 
 .inprocess_list {

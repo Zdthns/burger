@@ -18,7 +18,7 @@ function OrdersStatus() {
 
   const firstThirtyItems = (arr) => {
     if (arr.length > 10) {
-      return arr.slice(0, 10);
+      return arr.slice(0, 20);
     } else {
       if (arr.length <= 10) {
         return arr;
