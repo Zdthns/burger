@@ -17,7 +17,6 @@ export function Order({
   const hideIngredirntQty = ingredientsqty - 6;
 
   const allIngredients = useSelector((store) => store.ingredients.ingredients);
-
   const ingredientsDataArray = useMemo(() => {
     return ingredients.map((ingredientInOrder) => {
       return allIngredients.find((item) => ingredientInOrder === item._id);

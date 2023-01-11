@@ -35,7 +35,6 @@ function OrderInfo() {
     };
   });
   let orderData = orders.find((el) => el._id === id);
-
   const allIngredients = useSelector((store) => store.ingredients.ingredients);
 
   const orderInfo = useMemo(() => {
@@ -99,7 +98,7 @@ function OrderInfo() {
   return (
     <>
       <p className={`text text_type_digits-default mb-10 ${style.number}`}>
-        {orderInfo?.totalOrder}
+        #{orderInfo?.number}
       </p>
       <h3 className="text text_type_main-medium mb-3">{orderInfo?.name}</h3>
       {orderInfo?.status === "done" && (
