@@ -1,5 +1,11 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import {
+  NavLink,
+  Outlet,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import style from "./navigation.module.css";
 import {
   BurgerIcon,
@@ -10,17 +16,17 @@ import {
 
 function Navigation() {
   const setActive = ({ isActive }) => (isActive ? style.active : style.text);
-  const [type, setType] = React.useState("home");
+  const location = useLocation();
+  const isFeed = location.pathname.includes("feed");
+  const isConstructor = location.pathname.includes("/");
+  const isProfile = location.pathname.includes("/profile");
+
   return (
     <>
       <nav className={style.nav}>
         <li className={`${style.li} pt-4 pr-5 pb-4 pl-5 mr-2`}>
-          <NavLink
-            to={{ pathname: "/" }}
-            className={setActive}
-            onClick={() => setType("home")}
-          >
-            <BurgerIcon type={type === "home" ? "primary" : "secondary"} />
+          <NavLink to={{ pathname: "/" }} className={setActive}>
+            <BurgerIcon type={isConstructor ? "primary" : "secondary"} />
             <span className={`${style.text} ml-2 text_type_main-default`}>
               Конструктор
             </span>
@@ -28,12 +34,8 @@ function Navigation() {
         </li>
 
         <li className={`${style.li} pt-4 pr-5 pb-4 pl-5 mr-2`}>
-          <NavLink
-            to="/feed"
-            className={setActive}
-            onClick={() => setType("len")}
-          >
-            <ListIcon type={type === "len" ? "primary" : "secondary"} />
+          <NavLink to="/feed" className={setActive}>
+            <ListIcon type={isFeed ? "primary" : "secondary"} />
             <span className={`${style.text} ml-2  text_type_main-default`}>
               Лента заказов
             </span>
@@ -45,12 +47,8 @@ function Navigation() {
         </div>
 
         <li className={`${style.li} pt-4 pr-5 pb-4 pl-5 mr-2`}>
-          <NavLink
-            to="/profile"
-            className={setActive}
-            onClick={() => setType("profile")}
-          >
-            <ProfileIcon type={type === "profile" ? "primary" : "secondary"} />
+          <NavLink to="/profile" className={setActive}>
+            <ProfileIcon type={isProfile ? "primary" : "secondary"} />
             <span className={`${style.text} ml-2 text_type_main-default`}>
               Личный кабинет
             </span>
