@@ -95,7 +95,7 @@ export function Order({
             ingredientsqty > 6 && (
               <li className={style.list_item}>
                 <p
-                  className={`text text_type_main-default ${style.add_qty}`}
+                  className={`text text_type_main-default ${style.moreThanSix}`}
                 >{`+${hideIngredirntQty}`}</p>
                 <div className={style.back}>
                   {ingredientData.slice(5, 6).map((ing, index) => {
