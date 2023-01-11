@@ -7,7 +7,7 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 import { authUser } from "../../services/actions/user";
 import {
   wsConnectionStart,
-  wsConnectionClosed,
+  wsConnectionClose,
 } from "../../services/actions/wsConect";
 
 import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
@@ -87,10 +87,10 @@ function OrderInfo() {
 
     return () => {
       if (isProfile) {
-        dispatch(wsConnectionClosed());
+        dispatch(wsConnectionClose());
       }
       if (isFeed) {
-        dispatch(wsConnectionClosed());
+        dispatch(wsConnectionClose());
       }
     };
   }, [dispatch, orderData, orderInfo, location.pathname, user]);

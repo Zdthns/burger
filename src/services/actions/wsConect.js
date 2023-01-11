@@ -59,7 +59,7 @@ export const wsConnectionClosed = () => {
 };
 export const wsConnectionClose = () => {
   return {
-    type: WS_CONNECTION_CLOSED,
+    type: WS_CONNECTION_CLOSE,
   };
 };
 
