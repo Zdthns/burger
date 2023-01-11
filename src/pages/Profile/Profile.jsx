@@ -3,11 +3,21 @@ import { useDispatch, useSelector } from "react-redux";
 import style from "./style.module.css";
 import Form from "../../components/Form/Form";
 import { getUpdateUser } from "../../services/actions/user.js";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import NavBar from "../../components/profileComponents/NavBar/NavBar";
 import OrderPage from "../OrdersPage/OrderPage";
 
 function Profile() {
+  const location = useLocation();
+  const isOrders = location.pathname.includes("orders");
+
+  function textCaption(isOrders) {
+    if (isOrders) {
+      return "В этом разделе вы можете просмотреть свою историю заказов";
+    } else {
+      return " В этом разделе вы можете изменить свои персональные данные";
+    }
+  }
   const { user } = useSelector((store) => store.user);
   const [buttonVisible, setButtonVisible] = useState(false);
 
@@ -48,9 +58,7 @@ function Profile() {
             <NavBar />
           </div>
 
-          <p className={style.profile_caption}>
-            В этом разделе вы можете изменить свои персональные данные
-          </p>
+          <p className={style.profile_caption}>{textCaption(isOrders)}</p>
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <Routes>
