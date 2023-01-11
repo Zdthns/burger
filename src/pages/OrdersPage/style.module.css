@@ -12,7 +12,7 @@
   padding: 50px;
   row-gap: 16px;
   overflow-y: scroll;
-  max-height: 312px;
+  max-height: 80vh;
   padding-right: 24px;
 }
 
