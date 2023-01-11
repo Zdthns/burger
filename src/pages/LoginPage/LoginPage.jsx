@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import style from "../style.module.css";
+import style from "./style.module.css";
 import Form from "../../components/Form/Form";
 import { loginUser } from "../../services/actions/user";
 
