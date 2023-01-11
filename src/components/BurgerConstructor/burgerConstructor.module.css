@@ -11,13 +11,16 @@
   flex-direction: column;
   overflow: hidden;
   height: 80%;
+  border: 1px solid red;
 }
 
 
 .item {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  border: 1px solid rgb(72, 23, 206);
 }
 
 .bar {
