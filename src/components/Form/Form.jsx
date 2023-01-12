@@ -23,7 +23,7 @@ function Form({
           key={`${elem.name}`}
           type={elem.type}
           name={elem.name}
-          value={form[elem.name]}
+          value={form[elem.name] || ""}
           placeholder={elem.placeholder}
           onChange={onChange}
           icon={elem.icon}
