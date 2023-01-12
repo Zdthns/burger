@@ -4,7 +4,7 @@ import style from "./style.module.css";
 import Orders from "../../components/feedComponents/Orders/Orders";
 import OrdersStatus from "../../components/feedComponents/OrderStatus/OrderStatus";
 import {
-  wsConnectionClose,
+  wsConnectionClosed,
   wsConnectionStart,
 } from "../../services/actions/wsConect";
 
@@ -14,7 +14,7 @@ function Feed() {
   useEffect(() => {
     dispatch(wsConnectionStart());
     return () => {
-      dispatch(wsConnectionClose());
+      dispatch(wsConnectionClosed());
     };
   }, [dispatch]);
   const orders = useSelector((store) => store.wsReducer.messages.orders);
