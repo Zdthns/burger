@@ -23,7 +23,6 @@ function OrderInfo() {
   const isProfile = location.pathname.includes("profile");
   const isFeed = location.pathname.includes("feed");
 
-  const user = useSelector((store) => store.user);
   const userOrders = useSelector(
     (store) => store.wsReducer.userMessages.orders
   );
@@ -79,7 +78,6 @@ function OrderInfo() {
   useEffect(() => {
     if (!orderData) {
       if (isProfile) {
-        dispatch(authUser());
         dispatch(wsUserConnectionStart());
       }
       if (isFeed) {

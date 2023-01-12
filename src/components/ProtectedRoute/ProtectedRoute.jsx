@@ -9,8 +9,8 @@ function RouterProvider({ children, anonymous = false }) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
   if (anonymous && isAuth) {
-    const from = location.state?.from || { pathname: "/" };
-    return <Navigate to={from} />;
+    const { from } = location?.state || { from: { pathname: "/" } };
+    return <Navigate to={from.pathname} state={from.state} />;
   }
   return children;
 }

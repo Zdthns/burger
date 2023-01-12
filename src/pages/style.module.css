@@ -20,7 +20,10 @@
 
 }
 
-
+.wrapper_form {
+  display: flex;
+  flex-direction: column;
+}
 
 .link {
   margin: 0 0 0 8px;

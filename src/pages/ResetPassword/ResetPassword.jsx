@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Form from "../../components/Form/Form";
 import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import style from "../style.module.css";
 import { resetPassword } from "../../services/actions/user.js";
 
-function ResetPassword() {
-  const navigate = useNavigate();
+function ResetPasswordPage() {
   const location = useLocation();
   const fromPage = location.state?.from?.pathname;
 
@@ -41,7 +40,7 @@ function ResetPassword() {
     dispatch(resetPassword(form));
   };
 
-  function resetPassword() {
+  function handlerResetPassword() {
     if (fromPage) {
       return (
         <Form
@@ -60,9 +59,7 @@ function ResetPassword() {
   return (
     <section className={style.wrapper}>
       <h1>Востановление пароля</h1>
-      <div style={{ display: "flex", flexDirection: "column" }}>
-        {resetPassword()}
-      </div>
+      <div className={style.wrapper_form}>{handlerResetPassword()}</div>
       <p className={style.caption}>
         Вспомнили пароль?
         <a href="#">Войти</a>
@@ -71,4 +68,4 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword;
+export default ResetPasswordPage;
