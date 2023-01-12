@@ -110,21 +110,9 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
-                {/*<Route
-                    path="orders"
-                    element={
-                      <OrderPage>
-                        <Route path="/profile/orders/:id">
-                          <OrderInfo />
-                        </Route>
-                      </OrderPage>
-                    }
-                  />
-                </Profile>*/}
               </ProtectedRoute>
             }
           />
-          {/*<Route path="/profile/orders/:id" element={<OrderInfo />} />*/}
           <Route
             path="/profile/orders"
             element={
