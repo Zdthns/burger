@@ -10,7 +10,7 @@ function RouterProvider({ children, anonymous = false }) {
   }
   if (anonymous && isAuth) {
     const { from } = location?.state || { from: { pathname: "/" } };
-    return <Navigate to={from.pathname} state={from.state} />;
+    return <Navigate to={from.pathname} state={from.state} replace />;
   }
   return children;
 }

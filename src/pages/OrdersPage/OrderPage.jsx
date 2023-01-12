@@ -10,6 +10,8 @@ import {
 import { getCookie } from "../../utils/cookie.js";
 import { wsUserUrl } from "../../utils/userApi.js";
 import Orders from "../../components/feedComponents/Orders/Orders";
+import NavBar from "../../components/profileComponents/NavBar/NavBar";
+import Caption from "../../components/profileComponents/Caption/Caption";
 
 function OrderPage() {
   const dispatch = useDispatch();
@@ -28,9 +30,15 @@ function OrderPage() {
   const orders = useSelector((store) => store.wsReducer.userMessages.orders);
 
   return (
-    <ul className={style.section}>
-      <Orders data={orders} />
-    </ul>
+    <section className={style.section_wrapper}>
+      <div>
+        <NavBar />
+        <Caption />
+      </div>
+      <ul className={style.section}>
+        <Orders data={orders} />
+      </ul>
+    </section>
   );
 }
 

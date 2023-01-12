@@ -6,18 +6,9 @@ import { getUpdateUser } from "../../services/actions/user.js";
 import { Route, Routes, useLocation } from "react-router-dom";
 import NavBar from "../../components/profileComponents/NavBar/NavBar";
 import OrderPage from "../OrdersPage/OrderPage";
+import Caption from "../../components/profileComponents/Caption/Caption";
 
 function Profile() {
-  const location = useLocation();
-  const isOrders = location.pathname.includes("orders");
-
-  function textCaption(isOrders) {
-    if (isOrders) {
-      return "В этом разделе вы можете просмотреть свою историю заказов";
-    } else {
-      return " В этом разделе вы можете изменить свои персональные данные";
-    }
-  }
   const { user } = useSelector((store) => store.user);
   const [buttonVisible, setButtonVisible] = useState(false);
 
@@ -52,15 +43,12 @@ function Profile() {
   return (
     <section className={style.section}>
       <div className={style.profile_wrapper}>
-        <div>
-          <div className={style.nav}>
-            {" "}
-            <NavBar />
-          </div>
-
-          <p className={style.profile_caption}>{textCaption(isOrders)}</p>
+        <div className={style.nav}>
+          {" "}
+          <NavBar />
+          <Caption />
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <div className={style.section_form}>
           <Routes>
             <Route
               path="/"
