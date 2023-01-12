@@ -12,7 +12,7 @@ export function Orders({ data }) {
 
   return (
     <>
-      {orders.map((order) => {
+      {orders?.map((order) => {
         return (
           <Link
             state={{ background: location }}

@@ -53,7 +53,10 @@ function App() {
     setOrderDetailsOpen(false);
     navigate(-1);
   };
-
+  const closeOrderModal = () => {
+    dispatch(deleteIngredienData());
+    setOrderDetailsOpen(false);
+  };
   const openOrderModal = () => {
     setOrderDetailsOpen(true);
   };
@@ -164,7 +167,7 @@ function App() {
         </Routes>
       )}
       {orderDetailsOpen && (
-        <Modal title="" onClose={closeModal}>
+        <Modal title="" onClose={closeOrderModal}>
           <OrderDetails />
         </Modal>
       )}
