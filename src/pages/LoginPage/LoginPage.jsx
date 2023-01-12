@@ -10,7 +10,7 @@ function LoginPage() {
   const [form, setForm] = React.useState({ email: "", password: "" });
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { isAuth } = useSelector((store) => store.user);
+  //const { isAuth } = useSelector((store) => store.user);
   const location = useLocation();
 
   const fromPage = location.state?.from?.pathname || "/";
@@ -28,11 +28,11 @@ function LoginPage() {
     evt.preventDefault();
     dispatch(loginUser(form));
   };
-  React.useEffect(() => {
-    if (isAuth) {
-      return navigate(`${fromPage}`);
-    }
-  });
+  //React.useEffect(() => {
+  //  if (isAuth) {
+  //    return navigate(`${fromPage}`);
+  //  }
+  //});
 
   return (
     <section className={style.wrapper}>

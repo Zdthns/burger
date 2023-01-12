@@ -6,6 +6,8 @@ import { CurrencyIcon } from "@ya.praktikum/react-developer-burger-ui-components
 
 import { authUser } from "../../services/actions/user";
 import {
+  wsUserConnectionStart,
+  wsUserConnectionClosed,
   wsConnectionStart,
   wsConnectionClosed,
 } from "../../services/actions/wsConect";
@@ -78,7 +80,7 @@ function OrderInfo() {
     if (!orderData) {
       if (isProfile) {
         dispatch(authUser());
-        dispatch(wsConnectionStart());
+        dispatch(wsUserConnectionStart());
       }
       if (isFeed) {
         dispatch(wsConnectionStart());
@@ -87,13 +89,13 @@ function OrderInfo() {
 
     return () => {
       if (isProfile) {
-        dispatch(wsConnectionClosed());
+        dispatch(wsUserConnectionClosed());
       }
       if (isFeed) {
         dispatch(wsConnectionClosed());
       }
     };
-  }, []);
+  }, [dispatch, orderData, orderInfo, location.pathname]);
 
   return (
     <>

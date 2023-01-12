@@ -108,9 +108,9 @@ function App() {
           <Route
             path="/profile/*"
             element={
-              <ProtectedRoute isAuth={isAuth}>
-                <Profile>
-                  <Route
+              <ProtectedRoute>
+                <Profile />
+                {/*<Route
                     path="orders"
                     element={
                       <OrderPage>
@@ -120,12 +120,36 @@ function App() {
                       </OrderPage>
                     }
                   />
-                </Profile>
+                </Profile>*/}
+              </ProtectedRoute>
+            }
+          />
+          {/*<Route path="/profile/orders/:id" element={<OrderInfo />} />*/}
+          <Route
+            path="/profile/orders"
+            element={
+              <ProtectedRoute>
+                <OrderPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile/orders/:id"
+            element={
+              <ProtectedRoute>
+                <OrderInfo />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <ProtectedRoute anonymous>
+                <LoginPage />
               </ProtectedRoute>
             }
           />
           <Route path="/ingredients/:id" element={<IngredientDetails />} />
-          <Route path="/login" element={<LoginPage />} />
           <Route path="/feed/" element={<Feed />} />
           <Route path="/feed/:id" element={<OrderInfo />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -159,9 +183,11 @@ function App() {
           <Route
             path="/profile/orders/:id"
             element={
-              <Modal item=" text" title=" " onClose={closeModal}>
-                <OrderInfo />
-              </Modal>
+              <ProtectedRoute>
+                <Modal item=" text" title=" " onClose={closeModal}>
+                  <OrderInfo />
+                </Modal>
+              </ProtectedRoute>
             }
           />
         </Routes>

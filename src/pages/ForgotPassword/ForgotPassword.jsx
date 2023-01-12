@@ -14,7 +14,6 @@ function ForgotPassword() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { isReplacePassword, isAuth } = useSelector((store) => store.user);
 
   const fields = [
     { name: "email", placeholder: "Укажите e-mail", type: "email" },
@@ -28,15 +27,8 @@ function ForgotPassword() {
     evt.preventDefault();
     dispatch(requestCode(form.email));
     return navigate("/resetpassword", { state: { from: location } });
-    //return <Navigate to="/resetpassword" state={{ from: location }} />;
   };
-  //navigate("/resetpassword", { replace: true });
-  //if (isReplacePassword) {
-  //  return navigate("/resetpassword", { replace: true });
-  //}
-  //if (isAuth) {
-  //  return navigate("/", { replace: true });
-  //}
+
   return (
     <section className={style.wrapper}>
       <h1>Восстановление пароля</h1>
@@ -46,7 +38,6 @@ function ForgotPassword() {
         form={form}
         onChange={onChange}
         onSubmit={onSubmit}
-        //ressetForm={ressetPasword}
       />
       <div className={style.caption}>
         <p className="text text_type_main-default text_color_inactive">
