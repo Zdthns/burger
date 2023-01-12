@@ -53,7 +53,7 @@ const wsReducer = (state = initialState, action) => {
     case WS_GET_MESSAGE:
       return {
         ...state,
-        messages: { ...action.payload },
+        messages: { ...state.messages, ...action.payload },
       };
     case WS_CONNECTION_CLOSE:
       return {
@@ -85,7 +85,8 @@ const wsReducer = (state = initialState, action) => {
     case WS_USER_GET_MESSAGE:
       return {
         ...state,
-        userMessages: { ...action.payload },
+        wsError: undefined,
+        userMessages: { ...state.userMessages, ...action.payload },
       };
 
     default: {
