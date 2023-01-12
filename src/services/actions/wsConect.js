@@ -108,3 +108,8 @@ export const wsUserConnectionClosed = () => {
     type: WS_USER_CONNECTION_CLOSED,
   };
 };
+export const wsUserConnectionClose = () => {
+  return {
+    type: WS_USER_CONNECTION_CLOSE,
+  };
+};

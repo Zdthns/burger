@@ -4,17 +4,19 @@ import style from "./style.module.css";
 import Orders from "../../components/feedComponents/Orders/Orders";
 import OrdersStatus from "../../components/feedComponents/OrderStatus/OrderStatus";
 import {
-  wsConnectionClosed,
+  wsConnectionClose,
   wsConnectionStart,
 } from "../../services/actions/wsConect";
+import { useLocation } from "react-router-dom";
 
 function Feed() {
   const dispatch = useDispatch();
+  const location = useLocation;
 
   useEffect(() => {
     dispatch(wsConnectionStart());
     return () => {
-      dispatch(wsConnectionClosed());
+      dispatch(wsConnectionClose());
     };
   }, [dispatch]);
   const orders = useSelector((store) => store.wsReducer.messages.orders);
