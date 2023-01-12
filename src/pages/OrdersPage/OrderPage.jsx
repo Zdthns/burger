@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   wsUserConnectionStart,
-  wsUserConnectionClosed,
+  wsUserConnectionClose,
 } from "../../services/actions/wsConect";
 import { getCookie } from "../../utils/cookie.js";
 import { wsUserUrl } from "../../utils/userApi.js";
@@ -23,7 +23,7 @@ function OrderPage() {
       )
     );
     return () => {
-      dispatch(wsUserConnectionClosed());
+      dispatch(wsUserConnectionClose());
     };
   }, []);
 
