@@ -30,10 +30,12 @@ export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
       if (socket) {
         socket.onopen = (event) => {
           dispatch({ type: onOpen, payload: event });
+          console.log("соединение открывается");
         };
 
         socket.onerror = (event) => {
           dispatch({ type: onError, payload: event });
+          console.log("соединение не удалось");
         };
 
         socket.onmessage = (event) => {
@@ -42,10 +44,12 @@ export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
           const { success, ...restParsedData } = parsedData;
 
           dispatch({ type: onMessage, payload: restParsedData });
+          console.log("получение данных");
         };
 
         socket.onclose = (event) => {
           dispatch({ type: onClose, payload: event });
+          console.log("соединение закрыто");
         };
 
         if (type === wsSendMessage) {
@@ -55,6 +59,7 @@ export const socketMiddleware = (wsUrl, wsActions, isAuth = false) => {
 
         if (wsClose && type === wsClose && socket) {
           socket.close();
+          console.log("соединение закрывается");
         }
       }
       next(action);

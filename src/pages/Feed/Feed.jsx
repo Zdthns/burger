@@ -5,6 +5,7 @@ import Orders from "../../components/feedComponents/Orders/Orders";
 import OrdersStatus from "../../components/feedComponents/OrderStatus/OrderStatus";
 import {
   wsConnectionClose,
+  wsConnectionClosed,
   wsConnectionStart,
 } from "../../services/actions/wsConect";
 import { useLocation, useParams } from "react-router-dom";
@@ -18,7 +19,7 @@ function Feed() {
     dispatch(wsConnectionStart(wsUrl));
 
     return () => {
-      dispatch(wsConnectionClose());
+      dispatch(wsConnectionClosed());
     };
   }, [dispatch, location]);
 
