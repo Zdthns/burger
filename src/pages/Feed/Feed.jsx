@@ -19,7 +19,7 @@ function Feed() {
     return () => {
       dispatch(wsConnectionClose());
     };
-  }, []);
+  }, [dispatch]);
 
   const orders = useSelector((store) => store.wsReducer.messages.orders);
   return (

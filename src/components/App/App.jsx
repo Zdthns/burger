@@ -49,8 +49,6 @@ function App() {
 
   // order
   const closeModal = () => {
-    dispatch(deleteIngredienData());
-    setOrderDetailsOpen(false);
     navigate(-1);
   };
   const closeOrderModal = () => {

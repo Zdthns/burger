@@ -11,7 +11,8 @@ import {
   wsConnectionStart,
   wsConnectionClose,
 } from "../../services/actions/wsConect";
-
+import { wsUrl, wsUserUrl } from "../../utils/userApi.js";
+import { getCookie } from "../../utils/cookie.js";
 import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
 import { formatDate } from "../../utils/orders";
 
@@ -19,6 +20,7 @@ function OrderInfo() {
   const dispatch = useDispatch();
   let { id } = useParams();
   const location = useLocation();
+  const token = getCookie("token");
   const isProfile = location.pathname.includes("profile");
   const isFeed = location.pathname.includes("feed");
 
@@ -77,10 +79,14 @@ function OrderInfo() {
   useEffect(() => {
     if (!orderData) {
       if (isProfile) {
-        dispatch(wsUserConnectionStart());
+        dispatch(
+          wsUserConnectionStart(
+            `${wsUserUrl}?token=${token?.replace("Bearer ", "")}`
+          )
+        );
       }
       if (isFeed) {
-        dispatch(wsConnectionStart());
+        dispatch(wsConnectionStart(wsUrl));
       }
     }
 
