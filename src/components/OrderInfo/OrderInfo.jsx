@@ -92,7 +92,7 @@ function OrderInfo() {
         dispatch(wsConnectionClose());
       }
     };
-  }, [dispatch, orderData, orderInfo]);
+  }, [dispatch]);
 
   return (
     <>

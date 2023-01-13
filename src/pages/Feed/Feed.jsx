@@ -8,16 +8,18 @@ import {
   wsConnectionStart,
 } from "../../services/actions/wsConect";
 import { useLocation, useParams } from "react-router-dom";
+import { wsUrl } from "../../utils/userApi.js";
 
 function Feed() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(wsConnectionStart());
+    dispatch(wsConnectionStart(wsUrl));
+
     return () => {
       dispatch(wsConnectionClose());
     };
-  }, [dispatch]);
+  }, []);
 
   const orders = useSelector((store) => store.wsReducer.messages.orders);
   return (

@@ -25,7 +25,7 @@ function OrderPage() {
     return () => {
       dispatch(wsUserConnectionClose());
     };
-  }, []);
+  }, [dispatch, token]);
 
   const orders = useSelector((store) => store.wsReducer.userMessages.orders);
 
