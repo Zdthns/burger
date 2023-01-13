@@ -16,7 +16,6 @@ import IngredientInfo from "../feedComponents/IngreditntInfo/IngredientInfo";
 import { formatDate } from "../../utils/orders";
 
 function OrderInfo() {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   let { id } = useParams();
   const location = useLocation();
@@ -93,7 +92,7 @@ function OrderInfo() {
         dispatch(wsConnectionClose());
       }
     };
-  }, [dispatch, orderData, orderInfo, location.pathname]);
+  }, [dispatch, orderData, orderInfo]);
 
   return (
     <>

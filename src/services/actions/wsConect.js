@@ -17,21 +17,21 @@ export const WS_USER_SEND_MESSAGE = "WS_USER_SEND_MESSAGE";
 export const wsActions = {
   wsInit: WS_CONNECTION_START,
   onOpen: WS_CONNECTION_SUCCESS,
-  onClose: WS_CONNECTION_CLOSED,
+  onClose: WS_CONNECTION_CLOSE,
   onError: WS_CONNECTION_ERROR,
   wsSendMessage: WS_SEND_MESSAGE,
   onMessage: WS_GET_MESSAGE,
-  wsClose: WS_CONNECTION_CLOSE,
+  wsClose: WS_CONNECTION_CLOSED,
 };
 
 export const wsUserActions = {
   wsInit: WS_USER_CONNECTION_START,
   onOpen: WS_USER_CONNECTION_SUCCESS,
-  onClose: WS_USER_CONNECTION_CLOSED,
+  onClose: WS_USER_CONNECTION_CLOSE,
   onError: WS_USER_CONNECTION_ERROR,
   onMessage: WS_USER_GET_MESSAGE,
   wsSendMessage: WS_USER_SEND_MESSAGE,
-  wsClose: WS_USER_CONNECTION_CLOSE,
+  wsClose: WS_USER_CONNECTION_CLOSED,
 };
 
 export const wsConnectionStart = () => {
