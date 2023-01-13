@@ -12,6 +12,7 @@ import { wsUrl } from "../../utils/userApi.js";
 
 function Feed() {
   const dispatch = useDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(wsConnectionStart(wsUrl));
@@ -19,7 +20,7 @@ function Feed() {
     return () => {
       dispatch(wsConnectionClose());
     };
-  }, [dispatch]);
+  }, [dispatch, location]);
 
   const orders = useSelector((store) => store.wsReducer.messages.orders);
   return (
