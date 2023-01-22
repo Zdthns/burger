@@ -1,0 +1,42 @@
+.number {
+  align-self: center;
+  text-align: center;
+}
+
+.done {
+  color: #00CCCC;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  overflow-y: scroll;
+  max-height: 312px;
+  padding-right: 24px;
+}
+
+.section::-webkit-scrollbar {
+  width: 8px;
+}
+
+.section::-webkit-scrollbar-thumb {
+  background-color: #8585AD;
+  border: 3px solid #8585AD;
+  height: 140px;
+}
+
+.section::-webkit-scrollbar-track {
+  width: 8px;
+  background-color: #2F2F37;
+}
+
+.techinfo {
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+}

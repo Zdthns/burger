@@ -1,0 +1,54 @@
+.nav {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-bottom: 80px;
+  min-width: 320px;
+  font-style: normal;
+
+}
+
+
+.profile_caption {
+  width: 320px;
+  color: #8585AD;
+}
+
+.list {
+  height: 64px;
+  width: 320px;
+  list-style: none;
+  text-decoration: none;
+  color: #8585AD;
+}
+
+
+.activeLink {
+  color: white;
+}
+
+
+
+.additional_text {
+  display: flex;
+  max-width: 320px;
+}
+
+.wrapper {
+  display: flex;
+  column-gap: 60px;
+  justify-content: left;
+  max-width: 1240px;
+  margin: 120px auto 0 auto;
+}
+
+
+.button {
+  list-style: none;
+  text-decoration: none;
+  color: #8585AD;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+}

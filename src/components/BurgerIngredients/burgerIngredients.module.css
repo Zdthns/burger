@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  width: 100%;
+}
+
+.title {
+  text-align: left;
+  color: #F2F2F3;
+}
+
+.tabs {
+  display: flex;
+}
+
+.item {
+  list-style: none;
+  justify-self: left;
+  overflow-y: scroll;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+}
+
+.item::-webkit-scrollbar {
+  width: 8px;
+  height: 492px;
+}
+
+.item::-webkit-scrollbar-track {
+  background: #2F2F37;
+}
+
+.item::-webkit-scrollbar-thumb {
+  background: #8585AD;
+  border: 3px solid #2F2F37;
+  border-radius: 5px;
+}

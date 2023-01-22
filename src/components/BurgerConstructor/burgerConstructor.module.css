@@ -1,0 +1,46 @@
+.wrapper {
+  display: flex;
+  max-width: 600px;
+  width: 100%;
+  flex-direction: column;
+  padding: 100px 16px 0;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 80%;
+}
+
+
+.item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.bar {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.bar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bar::-webkit-scrollbar-track {
+  background: #2F2F37;
+}
+
+.bar::-webkit-scrollbar-thumb {
+  background: #8585AD;
+  border: 3px solid #2F2F37;
+  border-radius: 6px;
+}
+
+.item:last-child {
+  margin-bottom: 0;
+}
