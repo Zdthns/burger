@@ -30,22 +30,22 @@ function constructorReducer(state = initialState, action) {
         ),
       };
     }
-    case MOVE_INGREDIENT: {
-      const replacedConstructorIngredients = [...state.constructorIngredients];
-      const draggedIngredient =
-        replacedConstructorIngredients[action.payload.dragIndex];
-      replacedConstructorIngredients.splice(action.payload.dragIndex, 1);
-      replacedConstructorIngredients.splice(
-        action.payload.hoverIndex,
-        0,
-        draggedIngredient
-      );
+    //case MOVE_INGREDIENT: {
+    //  const replacedConstructorIngredients = [...state.constructorIngredients];
+    //  const draggedIngredient =
+    //    replacedConstructorIngredients[action.payload.dragIndex];
+    //  replacedConstructorIngredients.splice(action.payload.dragIndex, 1);
+    //  replacedConstructorIngredients.splice(
+    //    action.payload.hoverIndex,
+    //    0,
+    //    draggedIngredient
+    //  );
 
-      return {
-        ...state,
-        constructorIngredients: replacedConstructorIngredients,
-      };
-    }
+    //  return {
+    //    ...state,
+    //    constructorIngredients: replacedConstructorIngredients,
+    //  };
+    //}
     default: {
       return state;
     }

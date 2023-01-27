@@ -31,7 +31,6 @@ function BurgerConstructor({ createOrder }) {
   const orderBun = useMemo(() =>
     constructorIngredients.find((item) => item.type === "bun")
   );
-
   const burgerBun = useMemo(() =>
     constructorIngredients.filter((item) => item.type === "bun")
   );

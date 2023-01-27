@@ -10,7 +10,6 @@ import {
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
 import {
-  //DeleteIngredientFromConstructor,
   DELETE_INGREDIENT_FROM_CONSTRUCTOR,
   moveItems,
 } from "../../services/actions/constructor.js";
@@ -18,13 +17,9 @@ import {
 const BurgerConstructorItem = React.memo((props) => {
   const dispatch = useDispatch();
 
-  //const deleteElement = (evt, item) => {
-  //  evt.preventDefault();
-
-  //  dispatch(DeleteIngredientFromConstructor(item.key));
-  //};
-  const deleteElement = (evt, item) => {
-    evt.preventDefault();
+  const deleteElement = (item) => {
+    //evt.preventDefault();
+    console.log(item);
 
     dispatch({
       type: DELETE_INGREDIENT_FROM_CONSTRUCTOR,
@@ -42,7 +37,6 @@ const BurgerConstructorItem = React.memo((props) => {
 
       const dragIndex = item.index;
       const hoverIndex = props.index;
-
       if (dragIndex === hoverIndex) {
         return;
       }
@@ -59,12 +53,11 @@ const BurgerConstructorItem = React.memo((props) => {
         return;
       }
 
-      dispatch(moveItems(dragIndex, hoverIndex));
+      //dispatch(moveItems(dragIndex, hoverIndex));
 
       item.index = hoverIndex;
     },
   });
-
   const [{ isDragging }, drag] = useDrag({
     type: "constructorIngredient",
     item: () => {
@@ -89,7 +82,7 @@ const BurgerConstructorItem = React.memo((props) => {
         text={props.item.name}
         price={props.item.price}
         thumbnail={props.item.image}
-        handleClose={(e) => deleteElement(e, props.item)}
+        handleClose={(e) => deleteElement(props.item)}
       />
     </div>
   );
