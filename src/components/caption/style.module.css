@@ -1,0 +1,22 @@
+.link {
+  margin: 0 0 0 8px;
+  color: #4c4cff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+p>a {
+  text-decoration: none;
+  color: #4C4CFF;
+  padding-left: 8px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.caption {
+  padding-top: 80px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  color: #8585AD;
+}
