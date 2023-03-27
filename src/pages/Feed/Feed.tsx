@@ -16,13 +16,12 @@ const Feed: FC = () => {
 
   useEffect(() => {
     dispatch(wsConnectionStart(wsUrl));
-
     return () => {
       dispatch(wsConnectionClosed());
     };
-  }, [dispatch, location]);
-
+  }, []);
   const orders = useAppSelector((store) => store.wsReducer.messages.orders);
+
   return (
     <section className={style.page}>
       <article className={`pl-2 pr-2 ${style.feed_section}`}>

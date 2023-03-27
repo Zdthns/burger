@@ -37,9 +37,9 @@ const Navigation: FC = () => {
           </NavLink>
         </li>
 
-        <div className={style.logo}>
+        <NavLink to={{ pathname: "/" }} className={style.logo}>
           <Logo />
-        </div>
+        </NavLink>
 
         <li className={`${style.li} pt-4 pr-5 pb-4 pl-5 mr-2`}>
           <NavLink to="/profile" className={setActive}>

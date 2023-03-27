@@ -88,18 +88,18 @@ const OrderInfo: FC = () => {
       if (isProfile) {
         dispatch(wsUserConnectionStart(wsUserUrl));
       }
-      if (isFeed) {
-        dispatch(wsConnectionStart(wsUrl));
-      }
+      //if (isFeed) {
+      //  dispatch(wsConnectionStart(wsUrl));
+      //}
     }
 
     return () => {
       if (isProfile) {
         dispatch(wsUserConnectionClose());
       }
-      if (isFeed) {
-        dispatch(wsConnectionClose());
-      }
+      //if (isFeed) {
+      //  dispatch(wsConnectionClose());
+      //}
     };
   }, [dispatch]);
 

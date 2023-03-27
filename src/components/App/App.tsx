@@ -58,6 +58,7 @@ const App: FC = () => {
 
   // order
   const closeModal = () => {
+    setOrderDetailsOpen(false);
     navigate(-1);
   };
   const closeOrderModal = () => {
