@@ -34,7 +34,7 @@ const BurgerConstructorItem: FC<TconstructorItemProps> = React.memo((props) => {
         return;
       }
 
-      const dragIndex = props.item.index;
+      const dragIndex = item.index;
       const hoverIndex = props.index;
 
       if (dragIndex === hoverIndex) {
