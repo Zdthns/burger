@@ -1,6 +1,6 @@
 import style from "./cardBlock.module.css";
 
-import React from "react";
+import React, { SyntheticEvent } from "react";
 
 import IngredientCard from "../IngredientCard/IngredientCard";
 import {
@@ -9,7 +9,11 @@ import {
   useAppSelector,
 } from "../../utils/types/types";
 
-type PropType = { type: string; name: string; onClick: (event: any) => void };
+type PropType = {
+  type: string;
+  name: string;
+  onClick: (item: IngredientType) => void;
+};
 
 const CardBlock = React.forwardRef<HTMLLIElement, PropType>(
   ({ type, name, onClick }, ref) => {

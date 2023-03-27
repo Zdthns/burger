@@ -32,7 +32,7 @@ const ResetPasswordPage: FC = () => {
     },
   ];
 
-  const onChange = (evt: { target: { name: any; value: any } }) => {
+  const onChange: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
     setForm({ ...form, [evt.target.name]: evt.target.value });
   };
 

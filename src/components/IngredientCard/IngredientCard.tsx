@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, SyntheticEvent } from "react";
 import { useDrag } from "react-dnd";
 import { Link, useLocation } from "react-router-dom";
 import style from "./ingredientCard.module.css";
@@ -12,7 +12,7 @@ import { IngredientType, useAppSelector } from "../../utils/types/types";
 
 type PropTypes = {
   elem: IngredientType;
-  onClick: (event: any) => void;
+  onClick: (item: IngredientType) => void;
 };
 
 const IngredientCard: FC<PropTypes> = ({ elem, onClick }) => {
