@@ -1,7 +1,7 @@
 import { Navigate, useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { ReactNode, FC, ReactElement } from "react";
-import { AppStateType } from "../../utils/types/types";
+
+import { FC, ReactElement } from "react";
+import { AppStateType, useAppSelector } from "../../utils/types/types";
 
 interface IrouterProvider {
   children: ReactElement;
@@ -12,7 +12,7 @@ const RouterProvider: FC<IrouterProvider> = ({
   children,
   anonymous = false,
 }): ReactElement => {
-  const { isAuth } = useSelector((state: AppStateType) => state.user);
+  const { isAuth } = useAppSelector((state: AppStateType) => state.user);
   const location = useLocation();
 
   if (!anonymous && !isAuth) {

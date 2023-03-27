@@ -2,14 +2,14 @@ import { GET_ORDER_REQUEST, GET_ORDER_SUCCESS, GET_ORDER_FAILED } from "../../ut
 import { OrderType } from "../../utils/types/types";
 import { TActions } from "../actions/actionType";
 
-type initialStateType = {
+type TinitialStateType = {
   order: {
     number: number | null,
   }
   orderRequest: boolean,
   orderFailed: boolean,
 }
-const initialState: initialStateType = {
+const initialState: TinitialStateType = {
   order: {
     number: null
   },
@@ -17,7 +17,7 @@ const initialState: initialStateType = {
   orderFailed: false,
 };
 
-const orderReducer = (state = initialState, action: TActions): initialStateType => {
+const orderReducer = (state = initialState, action: TActions): TinitialStateType => {
   switch (action.type) {
     case GET_ORDER_REQUEST: {
       return {

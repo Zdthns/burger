@@ -20,14 +20,14 @@ type Tmessages = {
   totalToday: number
 }
 
-type initialStateType = {
+type TinitialStateType = {
   wsConnected: boolean,
   wsError: string | undefined,
   messages: Tmessages,
   userMessages: Tmessages
 }
 
-const initialState: initialStateType = {
+const initialState: TinitialStateType = {
   wsConnected: false,
   wsError: undefined,
   messages: {
@@ -42,7 +42,7 @@ const initialState: initialStateType = {
   },
 };
 
-const wsReducer = (state = initialState, action: TActions) => {
+const wsReducer = (state = initialState, action: TActions):TinitialStateType => {
   switch (action.type) {
     case WS_CONNECTION_SUCCESS:
       return {

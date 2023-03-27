@@ -29,7 +29,7 @@ import {
 import { TActions } from "../actions/actionType";
 
 
-export type initialStateUserType = {
+export type TinitialStateType = {
   user: TUser
   isAuth: boolean,
 
@@ -71,7 +71,7 @@ export type initialStateUserType = {
   preloader: boolean,
 }
 
-const initialState: initialStateUserType = {
+const initialState: TinitialStateType = {
   user: {
     name: '',
     email: '',
@@ -115,7 +115,7 @@ const initialState: initialStateUserType = {
   //загрузка
   preloader: false,
 };
-const userReducer = (state: initialStateUserType = initialState, action: TActions): initialStateUserType => {
+const userReducer = (state: TinitialStateType = initialState, action: TActions): TinitialStateType => {
   switch (action.type) {
     // востановление пароля
     // запрос начал выполняться

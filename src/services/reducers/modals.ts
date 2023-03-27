@@ -6,19 +6,19 @@ import {
 } from "../../utils/types/constants";
 import { TActions } from "../actions/actionType";
 
-type initialStateType = {
+type TinitialStateType = {
   ingredientDetailsVisible: boolean,
   orderVisible: boolean,
 }
 
 
-const initialState: initialStateType = {
+const initialState: TinitialStateType = {
   ingredientDetailsVisible: false,
   orderVisible: false,
 };
 export const modalsReducer = (
   state = initialState, action: TActions
-): initialStateType => {
+): TinitialStateType => {
   switch (action.type) {
     case OPEN_INGREDIENT_DETAILS: {
       return {
