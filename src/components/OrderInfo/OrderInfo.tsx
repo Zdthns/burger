@@ -23,11 +23,12 @@ const OrderInfo: FC = () => {
   const location = useLocation();
 
   const isProfile = location.pathname.includes("profile");
-  const isFeed = location.pathname.includes("feed");
+  //const isFeed = location.pathname.includes("feed");
 
   const userOrders = useAppSelector(
     (store) => store.wsReducer.userMessages.orders
   );
+  console.log(userOrders);
 
   const allOrders: OrderType<string[]>[] = useAppSelector(
     (store) => store.wsReducer.messages.orders
@@ -42,7 +43,6 @@ const OrderInfo: FC = () => {
   let orderData: OrderType<string[]> | undefined = orders.find(
     (el: OrderType<string[]>) => el._id === id
   );
-
   const allIngredients = useAppSelector(
     (store) => store.ingredients.ingredients
   );

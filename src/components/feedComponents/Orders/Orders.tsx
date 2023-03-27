@@ -11,8 +11,12 @@ type PropsType = {
 
 const Orders: FC<PropsType> = ({ data }) => {
   const location = useLocation();
+  const isProfile = location.pathname.includes("profile");
+  if (isProfile) {
+    data.reverse();
+  }
   const orders = data; // массив заказов
-
+  console.log(orders);
   return (
     <>
       {orders?.map((order) => {
