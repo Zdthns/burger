@@ -104,7 +104,7 @@ const OrderInfo: FC = () => {
   }, [dispatch]);
 
   return (
-    <>
+    <div className={style.container}>
       <p className={`text text_type_digits-default mb-10 ${style.number}`}>
         #{orderInfo?.number}
       </p>
@@ -143,7 +143,7 @@ const OrderInfo: FC = () => {
           <CurrencyIcon type="primary" />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

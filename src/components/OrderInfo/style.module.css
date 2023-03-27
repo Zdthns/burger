@@ -7,6 +7,12 @@
   color: #00CCCC;
 }
 
+.container {
+  margin: 0 auto;
+  width: 640px;
+  height: 620px;
+}
+
 .section {
   display: flex;
   flex-direction: column;
