@@ -5,9 +5,10 @@ import Form from "../../components/Form/Form";
 import { TFields, useAppDispatch } from "../../utils/types/types";
 import { requestCode } from "../../services/actions/user";
 import Caption from "../../components/caption/Caption";
+import { useForm } from "../../components/Form/hook/useForm";
 
 const ForgotPassword: React.FC = () => {
-  const [form, setForm] = useState({ email: "" });
+  //const [form, setForm] = useState({ email: "" });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -16,13 +17,14 @@ const ForgotPassword: React.FC = () => {
     { name: "email", placeholder: "Укажите e-mail", type: "email" },
   ];
 
-  const onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [evt.target.name]: evt.target.value });
-  };
+  //const onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  //  setForm({ ...form, [evt.target.name]: evt.target.value });
+  //};
+  const { values, handleChange, setValues } = useForm({ email: "" });
 
   const onSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
-    dispatch(requestCode(form.email));
+    dispatch(requestCode(values.email));
     return navigate("/resetpassword", { state: { from: location } });
   };
 
@@ -32,8 +34,8 @@ const ForgotPassword: React.FC = () => {
       <Form
         fields={fields}
         buttonText="Восстановить"
-        form={form}
-        onChange={onChange}
+        form={values}
+        onChange={handleChange}
         onSubmit={onSubmit}
       />
       <div className={style.caption}>

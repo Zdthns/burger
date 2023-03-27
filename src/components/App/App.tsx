@@ -79,6 +79,9 @@ const App: FC = () => {
       dispatch(authUser());
     }
   }, []);
+  useEffect(() => {
+    dispatch(getIngredients());
+  }, []);
 
   useEffect(() => {
     if (!isAuth && refreshTokenData && cookie) {
@@ -90,7 +93,6 @@ const App: FC = () => {
     if (cookie && isTokenSuccess && refreshTokenData && !isAuth) {
       dispatch(authUser());
     }
-    dispatch(getIngredients());
   }, [dispatch, refreshTokenData, isAuth, cookie, isTokenSuccess]);
 
   const createOrder = (orderData: IngredientType[]) => {

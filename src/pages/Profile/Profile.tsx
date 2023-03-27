@@ -13,16 +13,17 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../utils/types/types";
+import { useForm } from "../../components/Form/hook/useForm";
 
 const Profile: FC = () => {
   const { user } = useAppSelector((store) => store.user);
   const [buttonVisible, setButtonVisible] = useState(false);
 
-  const [form, setForm] = useState<TForm>({
-    name: user.name,
-    login: user.email,
-    password: "",
-  });
+  //const [form, setForm] = useState<TForm>({
+  //  name: user.name,
+  //  login: user.email,
+  //  password: "",
+  //});
   const dispatch = useAppDispatch();
 
   const fields: TFields[] = [
@@ -36,20 +37,26 @@ const Profile: FC = () => {
     },
   ];
 
-  const onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [evt.target.name]: evt.target.value });
-    setButtonVisible(true);
-  };
+  //const onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  //  setForm({ ...form, [evt.target.name]: evt.target.value });
+  //  setButtonVisible(true);
+  //};
+
+  const { values, handleChange, setValues } = useForm({
+    name: user.name,
+    login: user.email,
+    password: "",
+  });
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
-    dispatch(getUpdateUser(form));
+    dispatch(getUpdateUser(values));
     setButtonVisible(false);
   };
 
   const resetForm: () => void = () => {
     return (
-      setForm({
+      setValues({
         ...user,
         name: user.name,
         login: user.email,
@@ -58,7 +65,9 @@ const Profile: FC = () => {
       setButtonVisible(false)
     );
   };
-
+  const handlerClick: () => void = () => {
+    setButtonVisible(true);
+  };
   return (
     <section className={style.section}>
       <div className={style.profile_wrapper}>
@@ -75,11 +84,12 @@ const Profile: FC = () => {
                 <Form
                   fields={fields}
                   buttonText="Сохранить"
-                  form={form}
-                  onChange={onChange}
+                  form={values}
+                  onChange={handleChange}
                   onSubmit={onSubmit}
                   resetForm={resetForm}
                   buttonVisible={buttonVisible}
+                  handlerClick={handlerClick}
                 />
               }
             />

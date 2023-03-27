@@ -6,15 +6,12 @@ import style from "../style.module.css";
 import { resetPassword } from "../../services/actions/user";
 import { TFields, TForm, useAppDispatch } from "../../utils/types/types";
 import Caption from "../../components/caption/Caption";
+import { useForm } from "../../components/Form/hook/useForm";
 
 const ResetPasswordPage: FC = () => {
   const location = useLocation();
   const fromPage = location.state?.from?.pathname;
   const [token, setToken] = useState<string>("");
-  const [form, setForm] = useState<TForm>({
-    login: "",
-    password: "",
-  });
   const dispatch = useAppDispatch();
 
   const fields: TFields[] = [
@@ -32,13 +29,14 @@ const ResetPasswordPage: FC = () => {
     },
   ];
 
-  const onChange: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
-    setForm({ ...form, [evt.target.name]: evt.target.value });
-  };
+  const { values, handleChange, setValues } = useForm({
+    name: "",
+    email: "",
+  });
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
-    dispatch(resetPassword(form, token));
+    dispatch(resetPassword(values, token));
   };
 
   function handlerResetPassword() {
@@ -47,8 +45,8 @@ const ResetPasswordPage: FC = () => {
         <Form
           fields={fields}
           buttonText="Сохранить"
-          form={form}
-          onChange={onChange}
+          form={values}
+          onChange={handleChange}
           onSubmit={onSubmit}
           buttonVisible={false}
         />

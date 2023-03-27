@@ -15,6 +15,7 @@ type PropTypes = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
   resetForm?: () => void;
   buttonVisible?: boolean;
+  handlerClick?: () => void;
 };
 
 const Form: React.FC<PropTypes> = ({
@@ -25,6 +26,7 @@ const Form: React.FC<PropTypes> = ({
   onSubmit,
   resetForm,
   buttonVisible,
+  handlerClick,
 }) => {
   return (
     <form className={style.form} onSubmit={onSubmit}>
@@ -37,6 +39,7 @@ const Form: React.FC<PropTypes> = ({
           placeholder={elem.placeholder}
           onChange={onChange}
           icon={elem.icon}
+          onClick={handlerClick}
         />
       ))}
       <div className={style.buttons}>

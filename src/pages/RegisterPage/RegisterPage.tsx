@@ -8,9 +8,10 @@ import {
   useAppDispatch,
   useAppSelector,
 } from "../../utils/types/types";
+import { useForm } from "../../components/Form/hook/useForm";
 
 const RegisterPage: FC = () => {
-  const [form, setForm] = React.useState({ name: "", email: "", password: "" });
+  //const [form, setForm] = React.useState({ name: "", email: "", password: "" });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const { isAuth } = useAppSelector((store) => store.user);
@@ -21,19 +22,17 @@ const RegisterPage: FC = () => {
     { name: "password", placeholder: "пароль", type: "password" },
   ];
 
-  const onChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
-    setForm({ ...form, [evt.target.name]: evt.target.value });
-  };
+  const { values, handleChange, setValues } = useForm({
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const onSubmit: React.FormEventHandler<HTMLFormElement> = (evt) => {
     evt.preventDefault();
-    dispatch(registrationUser({ ...form }));
+    dispatch(registrationUser({ ...values }));
     navigate("/profile", { replace: true });
   };
-
-  //if (isAuth) {
-  //  return navigate("/profile", { replace: true });
-  //}
 
   return (
     <section className={style.wrapper}>
@@ -41,8 +40,8 @@ const RegisterPage: FC = () => {
       <Form
         fields={fieldsForm}
         buttonText="Регистрация"
-        form={form}
-        onChange={onChange}
+        form={values}
+        onChange={handleChange}
         onSubmit={onSubmit}
       />
       <p className={style.caption}>
